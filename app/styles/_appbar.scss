@@ -1,0 +1,33 @@
+@import "compass/css3/transition";
+@import "root";
+
+$appbar-background-color: rgba(72, 164, 216, 0.97);
+$appbar-idle-background-color: rgba(72, 164, 216, 0.3);
+$appbar-height: 3.5em;
+
+body {
+	position: relative;
+	padding-top: $appbar-height;
+}
+
+app-bar {
+	@include single-transition(opacity, .5s, cubic-bezier(0, 0.05, 0.3, 1));
+	
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+
+	box-sizing: border-box;
+	height: $appbar-height;
+	padding: $standard-padding;
+	width: 100%;
+	
+	background-color: $appbar-background-color;
+	box-shadow: 1em 0em 3em 0em #8F8F8F;
+	
+	&.idle {
+		opacity: 0.1;
+	}
+}
+

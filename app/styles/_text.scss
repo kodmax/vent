@@ -1,0 +1,56 @@
+@import "root";
+
+text-content {
+	display: block;
+	
+	color: $default-text-color;
+	cursor: text;
+	
+	font-size: 1rem;
+	@media screen and (min-resolution: 250dppx) {
+		font-size: 1.5rem;
+	} 
+	line-height: 1.5em;
+	
+	padding: 0 $standard-padding;
+	
+	p {
+		font-size: 1em;
+		line-height: 1.5em;
+		text-align: justify;
+		margin: 1.5em 0;
+	}
+
+	abbr {
+		letter-spacing: 0.1em;	
+	}
+	
+	h1 {
+		color: lighten($default-text-color, 5%);
+		text-transform: uppercase;
+		letter-spacing: 0.01em;
+		font-size: 1.5em;
+		line-height: 1em;
+		margin: 1em 0 0;
+	}
+	
+	h2 {
+		color: lighten($default-text-color, 5%);
+		text-transform: uppercase;
+		letter-spacing: 0.01em;
+		font-size: 1.25em;
+		line-height: 1.2em;
+	}
+	
+	h3 {
+		color: lighten($default-text-color, 5%);
+		text-transform: uppercase;
+		letter-spacing: 0.01em;
+		font-size: 1em;
+		line-height: 1.5em;
+	}
+	
+	&.column {
+		max-width: 33em;
+	}
+}
