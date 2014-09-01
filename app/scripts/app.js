@@ -1,11 +1,17 @@
 require.config({
 
+	config: {
+		xhr: {
+			defaultContentType: 'application/json',
+			expectContentType: 'application/json'
+		}
+	},
 	baseUrl: 'scripts/',
 	
 	paths: {
 		'modernizr': 'amd-wrappers/modernizr',
 		'modernizr.src': '.3rd-party/modernizr/modernizr',
-		'jquery': 'amd-wrappers/jquery'
+		'xhr': 'services/xhr'
 	},
 	
 	shim: {
@@ -13,8 +19,8 @@ require.config({
 	}
 });
 
-require([], function () {
+require(['xhr'], function (xhr) {
 	'use strict';
 
-	console.log('app start');
+	window.xhr = xhr;
 });
