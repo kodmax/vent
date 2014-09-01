@@ -1,1 +1,3 @@
 /.settings/
+/node_modules/
+/app/scripts/.3rd-party/
