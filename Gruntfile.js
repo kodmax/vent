@@ -16,6 +16,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-angular-templates');
+	grunt.loadNpmTasks('grunt-stonejs');
 	
 	grunt.initConfig({
 		config: {
@@ -36,6 +37,14 @@ module.exports = function (grunt) {
 					base: ['<%= config.directory.tmp %>', '<%= config.directory.app %>'],
 					open: {
 						target: 'http://localhost:8001'
+					},
+					middleware: function (connect, options, middlewares) {
+						middlewares.unshift(function (req, resp, next) {
+							console.log('serve', req.url);
+							return next();
+						});
+						
+						return middlewares;
 					}
 				}
 			},
@@ -88,6 +97,19 @@ module.exports = function (grunt) {
 			dist: {
 				src: ['<%= config.directory.scripts %>/**/*.*js']
 			}
+		},
+		
+		stonejs: {
+		      xhr: {
+		          options: {
+		            stoneName: 'xhr',
+		            configFile: 'scripts/app.js',
+		            baseDir: 'app/'
+		          },
+		          files: {
+		            '.tmp/xhr.js': 'services/xhr.js'
+		          }
+		        }			
 		},
 		
 		requirejs: {

@@ -12,8 +12,20 @@ define ([], function () {
 		var inst = this;
 		
 		xhr.onloadend = function (pe) {
-			if (typeof callbacks.success === 'function') {
-				callbacks.success.call(xhr, pe);
+			var json;
+			if (config.jsonMimeTypes.indexOf(xhr.getResponseHeader('Content-Type')) !== -1) {
+				json = JSON.parse(xhr.responseText);
+			}
+
+			if ((xhr.status >= 200) && (xhr.status < 300)) {
+				if (typeof callbacks.success === 'function') {
+					callbacks.success.call(xhr, json || xhr.responseText || xhr.response, pe);
+				}
+				
+			} else {
+				if (typeof callbacks.error === 'function') {
+					callbacks.error.call(xhr, json || xhr.responseText || xhr.response, pe);
+				}				
 			}
 		};
 
@@ -26,19 +38,18 @@ define ([], function () {
 			return this;
 		};
 		
-		this.json = function (callback) {
-			callbacks.success = function (pe) {
-				if (xhr.responseType !== 'application/json') {
-					callback.call(xhr, JSON.parse(xhr.responseText), pe);
-					
-				} else {
-					callback.call(xhr, xhr.response, pe);
-				}
-			};
+		/**
+		 * @method Request#error
+		 */
+		this.error = function (callback) {
+			callbacks.error = callback;
 			
 			return this;
 		};
 		
+		this.abort = function () {
+			xhr.abort();
+		};
 		
 		xhr.send();
 	};

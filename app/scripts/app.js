@@ -11,7 +11,8 @@ require.config({
 	paths: {
 		'modernizr': 'amd-wrappers/modernizr',
 		'modernizr.src': '.3rd-party/modernizr/modernizr',
-		'xhr': 'services/xhr'
+		'xhr': 'services/xhr',
+		'universal-time': 'services/universal-time/f'
 	},
 	
 	shim: {
@@ -19,8 +20,13 @@ require.config({
 	}
 });
 
-require(['xhr'], function (xhr) {
+require(['xhr', 'universal-time'], function (xhr, uT) {
 	'use strict';
 
-	window.xhr = xhr;
+
+	document.querySelector('#datepicker').onchange = function (event) {
+		console.log(this.value, uT(this.value));
+	}
 });
+
+var y  = 10;

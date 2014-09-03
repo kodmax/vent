@@ -2,25 +2,29 @@ define (['services/request', 'services/url', 'module'], function (Request, url, 
 	'use strict';
 	
 	var XHR = function () {
-		var config = module.config();
-		
-		this.config = function (config) {
-			config = config;
+		var config = {
+			jsonMimeTypes: ['application/json']
 		};
 		
-		this.GET = function (path, query) {
+		
+		
+		this.config = function (callback) {
+			callback.call(this, config);
+		};
+		
+		this.get = function (path, query) {
 			return new Request(config, 'GET', url(path, query));
 		};
 		
-		this.POST = function (path, query) {
+		this.post = function (path, query) {
 			return new Request(config, 'POST', url(path, query));
 		};
 		
-		this.PUT = function (path, query) {
+		this.put = function (path, query) {
 			return new Request(config, 'PUT', url(path, query));
 		};
 		
-		this.DELETE = function (path, query) {
+		this.remove = this ['delete'] = function (path, query) {
 			return new Request(config, 'DELETE', url(path, query));
 		};
 		
@@ -28,6 +32,8 @@ define (['services/request', 'services/url', 'module'], function (Request, url, 
 			delete window.xhr;
 			return this;
 		};
+		
+		this.url = url;
 	};
 	
 	return new XHR();
