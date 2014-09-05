@@ -33,6 +33,7 @@ define (['services/request', 'services/url', 'module'], function (Request, url, 
 			return this;
 		};
 		
+		
 		this.url = url;
 	};
 	

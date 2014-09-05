@@ -55,8 +55,8 @@ module.exports = function (grunt) {
 			build: {
 				options: {
 					port: 8002,
-					livereload: false,
-					keepalive: true,
+					livereload: true,
+					keepalive: false,
 					base: ['<%= config.directory.build %>'],
 					open: {
 						target: 'http://localhost:8002'
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
 			scripts: {
 				files: ['<%= config.directory.scripts %>/**/*.*js'],
 				options: { livereload: true },
-				tasks: ['jshint', 'karma:unit']
+				tasks: ['jshint', 'karma:dev']
 			},
 			
 			styles: {
@@ -84,6 +84,11 @@ module.exports = function (grunt) {
 			
 			css: {
 				files: ['<%= config.directory.tmp %>/css/**/*.css'],
+				options: { livereload: true }
+			},
+			
+			build: {
+				files: ['<%= config.directory.build %>/**/*.*'],
 				options: { livereload: true }
 			}
 		},
@@ -236,6 +241,11 @@ module.exports = function (grunt) {
 			options: {
 				configFile: 'karma.conf.js'
 			},
+			dev: {
+				//background:true,
+				singleRun: true,
+				reporters: 'dots'
+			},
 			unit: {
 				singleRun: true,
 				reporters: 'dots'
@@ -244,8 +254,8 @@ module.exports = function (grunt) {
 		
 	});
 	
-	grunt.registerTask('serve', ['compass', 'jshint', 'karma:unit', 'connect:dev', 'watch']);
-	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'compass', 'jshint', 'requirejs', 'copy:html', 'copy:images', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build', 'run']);
-	grunt.registerTask('run', ['connect:build']);
-	grunt.registerTask('test', ['jshint', 'karma:unit', 'watch']);
+	grunt.registerTask('serve', ['compass', 'jshint', 'karma:dev', 'connect:dev', 'watch']);
+	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'compass', 'jshint', 'karma:unit', 'requirejs', 'copy:html', 'copy:images', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build']);
+	grunt.registerTask('serve-build', ['connect:build', 'watch:build']);
+	grunt.registerTask('test', ['jshint', 'karma:unit', 'watch:scripts']);
 };
