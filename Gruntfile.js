@@ -42,7 +42,7 @@ module.exports = function (grunt) {
 					},
 					middleware: function (connect, options, middlewares) {
 						middlewares.unshift(function (req, resp, next) {
-							console.log('serve', req.url);
+							//console.log('serve', req.url);
 							return next();
 						});
 						

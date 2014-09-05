@@ -20,13 +20,3 @@ require.config({
 	}
 });
 
-require(['xhr', 'universal-time'], function (xhr, uT) {
-	'use strict';
-
-
-	document.querySelector('#datepicker').onchange = function (event) {
-		console.log(this.value, uT(this.value));
-	}
-});
-
-var y  = 10;
