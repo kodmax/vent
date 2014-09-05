@@ -19,6 +19,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-angular-templates');
 	grunt.loadNpmTasks('grunt-stonejs');
+	grunt.loadNpmTasks('grunt-karma');
 	
 	grunt.initConfig({
 		config: {
@@ -73,7 +74,7 @@ module.exports = function (grunt) {
 			scripts: {
 				files: ['<%= config.directory.scripts %>/**/*.*js'],
 				options: { livereload: true },
-				tasks: ['jshint']
+				tasks: ['jshint', 'karma:unit']
 			},
 			
 			styles: {
@@ -229,11 +230,22 @@ module.exports = function (grunt) {
 				src: 'templates/**/*.html',
 				dest: '<%= config.directory.app %>/scripts/templates.js'
 			}
+		},
+		
+		karma: {
+			options: {
+				configFile: 'karma.conf.js'
+			},
+			unit: {
+				singleRun: true,
+				reporters: 'dots'
+			}
 		}
 		
 	});
 	
-	grunt.registerTask('serve', ['compass', 'jshint', 'connect:dev', 'watch']);
+	grunt.registerTask('serve', ['compass', 'jshint', 'karma:unit', 'connect:dev', 'watch']);
 	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'compass', 'jshint', 'requirejs', 'copy:html', 'copy:images', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build', 'run']);
 	grunt.registerTask('run', ['connect:build']);
+	grunt.registerTask('test', ['jshint', 'karma:unit', 'watch']);
 };
