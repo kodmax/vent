@@ -3,6 +3,8 @@
  */
 module.exports = function (grunt) {
 	
+	require('time-grunt')(grunt);
+	
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-compass');
