@@ -28,7 +28,8 @@ module.exports = function (grunt) {
 				app: 'app',
 				scripts: 'app/scripts',
 				styles: 'app/styles',
-				build: '.build'
+				build: '.build',
+				test: 'test'
 			}
 		},
 		
@@ -72,7 +73,7 @@ module.exports = function (grunt) {
 			},
 			
 			scripts: {
-				files: ['<%= config.directory.scripts %>/**/*.*js'],
+				files: ['<%= config.directory.scripts %>/**/*.*js', '<%= config.directory.test %>/**/*.*js'],
 				options: { livereload: true },
 				tasks: ['jshint', 'karma:dev']
 			},
@@ -103,7 +104,7 @@ module.exports = function (grunt) {
 		
 		jshint: {
 			dist: {
-				src: ['<%= config.directory.scripts %>/**/*.*js']
+				src: ['<%= config.directory.scripts %>/**/*.*js', '<%= config.directory.test %>/**/*.*spec.js']
 			}
 		},
 		
