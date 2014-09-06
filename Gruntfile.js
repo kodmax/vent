@@ -110,16 +110,16 @@ module.exports = function (grunt) {
 		},
 		
 		stonejs: {
-		      xhr: {
-		          options: {
-		            stoneName: 'xhr',
-		            configFile: 'scripts/app.js',
-		            baseDir: 'app/'
-		          },
-		          files: {
-		            '.tmp/xhr.js': 'services/xhr.js'
-		          }
-		        }			
+			xhr: {
+				options: {
+					stoneName: 'xhr',
+					configFile: 'scripts/app.js',
+					baseDir: 'app/'
+				},
+				files: {
+					'.tmp/xhr.js': 'services/xhr.js'
+				}
+			}			
 		},
 		
 		requirejs: {
