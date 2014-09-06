@@ -3,6 +3,7 @@ define ([], function () {
 	
 	/**
 	 * @class Request
+	 * @author Marcin
 	 */
 	var Request = function (config, method, url) {
 		var xhr = new XMLHttpRequest();
