@@ -267,6 +267,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('serve', ['compass', 'jshint', 'karma:dev', 'connect:dev', 'watch']);
 	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'compass', 'jshint', 'karma:unit', 'requirejs', 'copy:html', 'copy:images', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build']);
 	grunt.registerTask('serve-build', ['connect:build', 'watch:build']);
-	grunt.registerTask('test', ['jshint', 'karma:unit', 'watch:scripts']);
+	grunt.registerTask('test', ['jshint', 'karma:unit']);
 	grunt.registerTask('doc', ['jsdoc']);
 };
