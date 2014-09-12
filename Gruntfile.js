@@ -21,6 +21,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-stonejs');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-jsdoc');
+	grunt.loadNpmTasks('grunt-mocha-test');
 	
 	grunt.initConfig({
 		config: {
@@ -261,6 +262,13 @@ module.exports = function (grunt) {
 			dist: {
 				src: ['app/scripts/**/*.js']
 			}
+		},
+		
+		mochaTest: {
+			options: {
+				reporter: 'spec'
+			},
+			src: ['test/web/**/*.js']
 		}
 	});
 	
