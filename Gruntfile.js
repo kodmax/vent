@@ -38,11 +38,11 @@ module.exports = function (grunt) {
 		connect: {
 			dev: {
 				options: {
-					port: 8001,
+					port: 8005,
 					livereload: true,
 					base: ['<%= config.directory.tmp %>', '<%= config.directory.app %>'],
 					open: {
-						target: 'http://localhost:8001'
+						target: 'http://localhost:8005'
 					},
 					middleware: function (connect, options, middlewares) {
 						middlewares.unshift(function (req, resp, next) {
@@ -77,7 +77,7 @@ module.exports = function (grunt) {
 			scripts: {
 				files: ['<%= config.directory.scripts %>/**/*.*js', '<%= config.directory.test %>/**/*.*js'],
 				options: { livereload: true },
-				tasks: ['jshint', 'karma:dev']
+				tasks: ['jshint']
 			},
 			
 			styles: {
