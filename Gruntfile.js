@@ -22,6 +22,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-jsdoc');
 	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-dom-templates');
 	
 	grunt.initConfig({
 		config: {
@@ -77,7 +78,7 @@ module.exports = function (grunt) {
 			scripts: {
 				files: ['<%= config.directory.scripts %>/**/*.*js', '<%= config.directory.test %>/**/*.*js'],
 				options: { livereload: true },
-				tasks: ['jshint', 'karma:dev']
+				tasks: ['jshint']
 			},
 			
 			styles: {
@@ -260,7 +261,7 @@ module.exports = function (grunt) {
 				destination: 'doc'
 			},
 			dist: {
-				src: ['app/scripts/**/*.js']
+				src: ['<%= config.directory.scripts %>/**/*.js']
 			}
 		},
 		
@@ -273,6 +274,14 @@ module.exports = function (grunt) {
 				}]
 			},
 			src: ['test/web/**/*.js']
+		},
+		
+		dom_templates: {
+			compile: {
+				files: {
+					'<%= config.directory.scripts %>/compiled/templates.js': ['<%= config.directory.scripts %>/**/*.html']
+				}
+			}
 		}
 	});
 	

@@ -1,6 +1,7 @@
 /.settings/
 /node_modules/
 /app/scripts/.3rd-party/
+/app/scripts/compiled/
 /.project
 /.tmp/
 /.build/
