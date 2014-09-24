@@ -11,7 +11,8 @@ require.config({
 		'underscore': '.3rd-party/underscore/underscore',
 		'underscore.no-global': '.no-global/underscore',
 		'backbone': '.3rd-party/backbone/backbone',
-		'backbone.no-global': '.no-global/backbone'
+		'backbone.no-global': '.no-global/backbone',
+		'dom-node': 'services/dom-node/dom-node'
 	},
 	
 	map: {
