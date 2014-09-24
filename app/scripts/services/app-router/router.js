@@ -7,12 +7,14 @@ define(['backbone', 'exception', 'lib/argument-list', 'services/app-router/card'
 		var history = [];
 		
 		this.loadHomeCardDefinition = function (cardDefinition) {
-			history.push(new Card(cardDefinition, []));
+			history.push(new Card(cardDefinition, [], ''));
 		};
 		
 		this.loadCardDefinition = function (cardDefinition) {
-			router.route(cardDefinition.url, cardDefinition.name, function () {				
-				var card = new Card(cardDefinition, args(arguments));
+			router.route(cardDefinition.url, cardDefinition.name, function () {
+				history [history.length - 1].sleep();
+				
+				var card = new Card(cardDefinition, args(arguments), location.hash);
 				history.push(card);
 				card.show();
 			});
@@ -32,9 +34,13 @@ define(['backbone', 'exception', 'lib/argument-list', 'services/app-router/card'
 			}
 		};
 		
-		this.closeCard = function () {
+		this.back = function () {
 			if (history.length > 1) {
 				history.pop().close();
+				
+				var card = history [history.length - 1];
+				router.navigate(card.getUrl(), { replace: true, trigger: false });
+				card.show();
 			}
 		};
 		
