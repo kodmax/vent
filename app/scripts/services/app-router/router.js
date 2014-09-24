@@ -13,6 +13,11 @@ define(['backbone', 'exception', 'lib/argument-list', 'services/app-router/card'
 				switchCard(currentState.id);
 				
 			} else {
+				_.each(_.keys(history), function (id) {
+					if (id > historyPointer) {
+						delete history [id];
+					}
+				});
 				matchUrl(event.newURL.replace(/.*#/, ''));
 			}
 		});

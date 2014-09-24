@@ -13,8 +13,8 @@ define([], function() {
 			console.log('sleeping card', def);
 		};
 		
-		this.close = function () {
-			console.log('closing card', def);
+		this.dispose = function () {
+			console.log('disposing card', def);
 		};
 		
 		this.getUrl = function () {
