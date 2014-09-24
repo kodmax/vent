@@ -13,7 +13,7 @@ require.config({
 		'xhr': 'services/xhr',
 		'universal-time': 'services/universal-time/f',
 		'jquery': '.3rd-party/jquery/dist/jquery',
-		'dom-templates': 'compiled/templates'
+		'dom-templates': '.compiled/templates'
 	},
 	
 	shim: {

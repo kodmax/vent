@@ -285,7 +285,7 @@ module.exports = function (grunt) {
 		dom_templates: {
 			compile: {
 				files: {
-					'<%= config.directory.scripts %>/compiled/templates.js': ['<%= config.directory.scripts %>/**/*.html']
+					'<%= config.directory.scripts %>/.compiled/templates.js': ['<%= config.directory.scripts %>/**/*.html']
 				}
 			}
 		}
