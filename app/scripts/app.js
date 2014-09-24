@@ -35,6 +35,4 @@ require(['dom-templates', 'backbone', 'jquery', 'modernizr'], function (tpl, Bac
 	document.body.removeChild(document.getElementsByTagName('app-loader')[0]);
 	var appbarTpl = tpl('app-bar', { parent: document.body });
 	var mainTpl = tpl('main-content', { parent: document.body });		
-	
-	console.log(Backbone);
 });
