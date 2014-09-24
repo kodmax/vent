@@ -3,12 +3,11 @@ define(['translate'], function(t) {
 
 	var card = {
 		
-		name: t('Home'),
-			
-		urls: { home: '#' },
+		url: 'category/:id',
+		name: 'category',
 		
 		controller: function () {
-			
+			console.log('category card');
 		}
 	};
 	
