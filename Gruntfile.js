@@ -76,7 +76,7 @@ module.exports = function (grunt) {
 			},
 			
 			scripts: {
-				files: ['<%= config.directory.scripts %>/**/*.*js', '<%= config.directory.test %>/**/*.*js'],
+				files: ['<%= config.directory.scripts %>/**/*.js', '<%= config.directory.test %>/**/*.js'],
 				options: { livereload: true },
 				tasks: ['jshint']
 			},
@@ -94,6 +94,12 @@ module.exports = function (grunt) {
 			build: {
 				files: ['<%= config.directory.build %>/**/*.*'],
 				options: { livereload: true }
+			},
+			
+			dom_templates: {
+				files: ['<%= config.directory.scripts %>/**/*.html'],
+				options: { livereload: true },
+				tasks: ['dom_templates:compile']
 			}
 		},
 		
@@ -285,7 +291,7 @@ module.exports = function (grunt) {
 		}
 	});
 	
-	grunt.registerTask('serve', ['compass', 'jshint', 'karma:dev', 'connect:dev', 'watch']);
+	grunt.registerTask('serve', ['compass', 'jshint', 'karma:dev', 'dom_templates:compile', 'connect:dev', 'watch']);
 	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'compass', 'jshint', 'karma:unit', 'requirejs', 'copy:html', 'copy:images', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build']);
 	grunt.registerTask('serve-build', ['connect:build', 'watch:build']);
 	grunt.registerTask('test', ['jshint', 'karma:unit']);

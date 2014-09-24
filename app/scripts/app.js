@@ -27,8 +27,9 @@ require(['rivets', 'jquery', 'tpl'], function (rivets, $, tpl) {
 	$.noConflict();
 
 	var items = [{label: 'a'}, {label: 'b'}];
-	
-	rivets.bind($(tpl('home', { parent: document.body })), {
+	var homeTpl = tpl('home', { parent: document.body });
+	console.log(homeTpl.getAllNamedNodes(), homeTpl.getNodeByName('the-node'));
+	rivets.bind($(homeTpl.getRootNode()), {
 		items: items
 	});
 	
