@@ -25,9 +25,10 @@ require.config({
 	}
 });
 
-require(['dom-templates', 'modernizr'], function (tpl, modernizr) {
-	var homeTpl = tpl('home', { parent: document.body });
-	
-	console.log(homeTpl.getAllNamedNodes(), homeTpl.getNodeByName('the-node'));
-	console.log(modernizr);
+require(['dom-templates'], function (tpl) {
+	setTimeout(function () {
+		document.body.removeChild(document.getElementsByTagName('app-loader')[0]);
+		var appbarTpl = tpl('app-bar', { parent: document.body });
+		var mainTpl = tpl('main-content', { parent: document.body });		
+	}, 100);
 });
