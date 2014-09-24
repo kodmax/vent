@@ -3,6 +3,8 @@ define([], function() {
 
 	var Card = function (def, args, url) {
 		
+		console.log('card created', def);
+		
 		this.show = function () {
 			console.log('showing card', def, args);
 		};

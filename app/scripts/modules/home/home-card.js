@@ -4,6 +4,7 @@ define([], function() {
 	var card = {
 		
 		name: 'home',
+		url: '',
 		
 		controller: function () {
 			console.log('home card');

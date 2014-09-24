@@ -3,7 +3,7 @@ define(['translate'], function(t) {
 
 	var card = {
 		
-		url: 'category/:id',
+		url: 'category',
 		name: 'category',
 		
 		controller: function () {

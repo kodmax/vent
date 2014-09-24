@@ -5,7 +5,7 @@ define([], function() {
 		this.toString = function () {
 			return msg + '';
 		};
-	}
+	};
 	
 	return Exception;
 });

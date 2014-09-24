@@ -2,7 +2,7 @@ define(['app-router', 'modules/home/home-card', 'modules/category/category-card'
 	'use strict';
 
 	var initRoutes = function () {
-		router.loadHomeCardDefinition(home);
+		router.loadCardDefinition(home);
 		router.loadCardDefinition(category);
 		router.start();
 	};

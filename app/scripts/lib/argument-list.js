@@ -9,7 +9,7 @@ define([], function() {
 		}
 		
 		return argList;
-	}
+	};
 	
 	return argList;
 });

@@ -1,51 +1,53 @@
-define(['backbone', 'exception', 'lib/argument-list', 'services/app-router/card'], function(Backbone, Exception, args, Card) {
+define(['backbone', 'exception', 'lib/argument-list', 'services/app-router/card', 'underscore'], function(Backbone, Exception, args, Card, _) {
 	'use strict';
 
 	var AppRouter = function () {
 		
-		var router = new Backbone.Router();
-		var history = [];
+		var currentState;
+		addEventListener('popstate', function (event) {
+			currentState = event.state;
+		});
 		
-		this.loadHomeCardDefinition = function (cardDefinition) {
-			history.push(new Card(cardDefinition, [], ''));
+		addEventListener('hashchange', function (event) {
+			if (currentState && currentState.id && history [currentState.id]) {
+				switchCard(currentState.id);
+				
+			} else {
+				matchUrl(event.newURL.replace(/.*#/, ''));
+			}
+		});
+		
+		var historyPointer;
+		var history = {};
+		var cards = [];
+
+		var switchCard = function (id) {
+			if (historyPointer) {
+				history [historyPointer].sleep();
+			}
+			
+			history [historyPointer = id].show();
 		};
 		
 		this.loadCardDefinition = function (cardDefinition) {
-			router.route(cardDefinition.url, cardDefinition.name, function () {
-				history [history.length - 1].sleep();
-				
-				var card = new Card(cardDefinition, args(arguments), location.hash);
-				history.push(card);
-				card.show();
+			cards.push(cardDefinition);
+		};
+		
+		var matchUrl = function (url) {
+			_.each(cards, function (card) {
+				if (url === card.url) {
+					var id = new Date().getTime();
+					history [id] = new Card(card, [], url);
+					window.history.replaceState({ id: id });
+					switchCard(id);
+				}
 			});
 		};
 		
-		this.start = function () {
-			if (history.length === 0) {
-				throw new Exception('Home card not defined');
-			}
+		this.start = function (opts) {
+			opts = opts || {};
 			
-			if (location.hash === '') {
-				Backbone.history.start({ silent: true });
-				history [0].show();
-				
-			} else {
-				Backbone.history.start();
-			}
-		};
-		
-		this.back = function () {
-			if (history.length > 1) {
-				history.pop().close();
-				
-				var card = history [history.length - 1];
-				router.navigate(card.getUrl(), { replace: true, trigger: false });
-				card.show();
-			}
-		};
-		
-		this.navigate = function (url) {
-			router.navigate(url, { replace: true, trigger: true });
+			matchUrl(window.location.hash.replace(/^#/, ''));
 		};
 	};
 	
