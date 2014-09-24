@@ -9,28 +9,25 @@ require.config({
 	baseUrl: 'scripts/',
 	
 	paths: {
-		'modernizr': 'amd-wrappers/modernizr',
-		'modernizr.src': '.3rd-party/modernizr/modernizr',
+		'modernizr': '.3rd-party/modernizr/modernizr',
 		'xhr': 'services/xhr',
 		'universal-time': 'services/universal-time/f',
-		'rivets': '.3rd-party/rivets/dist/rivets',
 		'jquery': '.3rd-party/jquery/dist/jquery',
-		'tpl': 'compiled/templates'
+		'dom-templates': 'compiled/templates'
 	},
 	
 	shim: {
-		'modernizr.src': { exports: 'Modernizr'	}
+		'modernizr': { init: function () {
+			var modernizr = Modernizr;
+			delete window.Modernizr;
+			return modernizr;
+		}}
 	}
 });
 
-require(['rivets', 'jquery', 'tpl'], function (rivets, $, tpl) {
-	$.noConflict();
-
-	var items = [{label: 'a'}, {label: 'b'}];
+require(['dom-templates', 'modernizr'], function (tpl, modernizr) {
 	var homeTpl = tpl('home', { parent: document.body });
-	console.log(homeTpl.getAllNamedNodes(), homeTpl.getNodeByName('the-node'));
-	rivets.bind($(homeTpl.getRootNode()), {
-		items: items
-	});
 	
+	console.log(homeTpl.getAllNamedNodes(), homeTpl.getNodeByName('the-node'));
+	console.log(modernizr);
 });
