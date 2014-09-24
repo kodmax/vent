@@ -18,7 +18,7 @@ define(['backbone', 'exception', 'lib/argument-list', 'services/app-router/card'
 						delete history [id];
 					}
 				});
-				matchUrl(event.newURL.replace(/.*#/, ''));
+				matchUrl(event.newURL.replace(/.*#|.*/, ''));
 			}
 		});
 		
