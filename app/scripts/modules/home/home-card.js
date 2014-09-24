@@ -3,8 +3,7 @@ define([], function() {
 
 	var card = {
 		
-		urls: { home: '#' },
-		name: 'name',
+		name: 'home',
 		
 		controller: function () {
 			console.log('home card');

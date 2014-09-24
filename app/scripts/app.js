@@ -14,7 +14,8 @@ require.config({
 		'backbone.no-global': '.no-global/backbone',
 		'dom-node': 'services/dom-node/dom-node',
 		'app-router': 'services/app-router/router',
-		'translate': 'services/translate/t'
+		'translate': 'services/translate/t',
+		'exception': 'lib/exception'
 	},
 	
 	map: {

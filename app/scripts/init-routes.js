@@ -1,9 +1,9 @@
-define(['app-router', 'modules/home/card', 'modules/category/card'], function(router, home, category) {
+define(['app-router', 'modules/home/home-card', 'modules/category/category-card'], function(router, home, category) {
 	'use strict';
 
 	var initRoutes = function () {
+		router.loadHomeCardDefinition(home);
 		router.loadCardDefinition(category);
-		router.loadCardDefinition(home);
 		router.start();
 	};
 	
