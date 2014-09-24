@@ -1,8 +1,8 @@
 @import "compass/css3/transition";
 @import "root";
 
-$appbar-background-color: rgba(72, 164, 216, 0.97);
-$appbar-idle-background-color: rgba(72, 164, 216, 0.3);
+$appbar-background-color: rgba(83, 83, 83, 0.97);
+$appbar-idle-background-color: rgba(83, 83, 83, 0.3);
 $appbar-height: 3.5em;
 
 body {
@@ -24,7 +24,7 @@ app-bar {
 	width: 100%;
 	
 	background-color: $appbar-background-color;
-	box-shadow: 1em 0em 3em 0em #8F8F8F;
+	box-shadow: 0em 0em 1em 0.3em #8F8F8F;
 	
 	&.idle {
 		opacity: 0.1;

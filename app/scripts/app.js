@@ -12,7 +12,9 @@ require.config({
 		'underscore.no-global': '.no-global/underscore',
 		'backbone': '.3rd-party/backbone/backbone',
 		'backbone.no-global': '.no-global/backbone',
-		'dom-node': 'services/dom-node/dom-node'
+		'dom-node': 'services/dom-node/dom-node',
+		'app-router': 'services/app-router/router',
+		'translate': 'services/translate/t'
 	},
 	
 	map: {
@@ -31,8 +33,8 @@ require.config({
 	}
 });
 
-require(['dom-templates', 'backbone', 'jquery', 'modernizr'], function (tpl, Backbone, $, Mod) {
+require(['./init-routes', 'dom-templates'], function (initRoutes, tpl) {
 	document.body.removeChild(document.getElementsByTagName('app-loader')[0]);
-	var appbarTpl = tpl('app-bar', { parent: document.body });
-	var mainTpl = tpl('main-content', { parent: document.body });		
+	tpl('app-bar', { parent: document.body });
+	initRoutes();
 });
