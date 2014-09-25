@@ -1,4 +1,4 @@
-define(['./hash-matcher'], function(HashMatcher) {
+define(['./hash-matcher', './navigator', './controller-driver'], function(HashMatcher, Navigator, ControllerDriver) {
 	'use strict';
 
 	/**
@@ -52,12 +52,45 @@ define(['./hash-matcher'], function(HashMatcher) {
 			notFoundController = controller;
 			return this;
 		};
+	
 		
+		var controller = function (controllerContext) {
+			var context
+		}
+		
+		var navigator;
 		/**
 		 * @method app-router.AppRouter#start
 		 * @returns app-router.AppRouter
 		 */
 		this.start = function () {
+			if (!navigator) {
+				navigator = new Navigator({
+					
+					create: function (hash) {
+						var match = hashMatcher.match(hash);
+						if (match) {
+							return new ControllerDriver(hash, match.controller, match.params);
+							
+						} else {
+							return new ControllerDriver(hash, notFoundController);
+						}
+					},
+					
+					navin: function (driver) {
+						driver.navin();
+					},
+					
+					navout: function (driver) {
+						driver.navout();
+					},
+					
+					dispose: function (driver) {
+						driver.dispose();
+					}
+					
+				});
+			}
 			return this;
 		};
 	};

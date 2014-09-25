@@ -14,6 +14,8 @@ define(['./pattern-regexp'], function(patternRegexp) {
 		 * @returns controller
 		 */
 		this.match = function (hash) {
+			hash = (hash + '').replace(/^#/, '');
+			
 			for (var i = 0; i < routes.length; i++) {
 				var route = routes [i];
 				

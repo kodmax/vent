@@ -17,5 +17,12 @@ define(['services/app-router/hash-matcher'], function(HashMatcher) {
 			assert.equal(route.controller, 'foo');
 		});
 		
+		it('Should not care whenever there is a leading # or not', function () {
+			var route = new HashMatcher([{controller: 'foo', pattern: '#foo'}]).match('#foo');
+			assert.isObject(route);
+			assert.equal(route.params [0], 'foo');
+			assert.equal(route.controller, 'foo');
+		});
+		
 	});
 });

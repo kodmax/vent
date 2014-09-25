@@ -8,11 +8,11 @@ define(['services/app-router/pattern-regexp'], function(patternRegexp) {
 		});
 		
 		it('Should converting pattern with param "foo/:id"', function () {
-			assert.equal(patternRegexp('foo/:id'), '/^foo\/([\\w-]+)$/');
+			assert.equal(patternRegexp('#foo/:id'), '/^foo\/([\\w-]+)$/');
 		});
 		
 		it('Match test for converting pattern with param"foo/:id"', function () {
-			var match = patternRegexp('foo/:id').exec('foo/123');
+			var match = patternRegexp('#foo/:id').exec('foo/123');
 			assert.equal(match [0], 'foo/123');
 			assert.equal(match [1], '123');
 		});

@@ -39,24 +39,7 @@ require(['dom-templates', 'app-router', 'services/app-router/navigator'], functi
 	tpl('app-bar', { parent: document.body });
 	
 	
-	new Navigator({
-		create: function (url) {
-			console.log('create', url);
-			return { url: url };
-		},
-		navin: function (context) {
-			console.log('navin', context);
-		},
-		navout: function (context) {
-			console.log('navout', context);
-		},
-		dispose: function (context) {
-			console.log('dispose', context);
-		}
-	});
-	
-	
-	appRouter.setHomeRoute(function () {
+	appRouter.addRoute('', function () {
 		
 	});
 	
@@ -68,7 +51,5 @@ require(['dom-templates', 'app-router', 'services/app-router/navigator'], functi
 		
 	});
 	
-	appRouter.setNotFoundRoute(function () {
-		
-	});
+	appRouter.start();
 });
