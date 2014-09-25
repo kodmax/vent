@@ -13,7 +13,7 @@ require.config({
 		'backbone': '.3rd-party/backbone/backbone',
 		'backbone.no-global': '.no-global/backbone',
 		'dom-node': 'services/dom-node/dom-node',
-		'app-router': 'services/app-router/f',
+		'app-router': 'services/jsapp-router',
 		'translate': 'services/translate/t',
 		'exception': 'lib/exception'		
 	},
@@ -60,12 +60,44 @@ require(['dom-templates', 'app-router', 'jquery'], function (tpl, appRouter, $) 
 		};
 	});
 	
-	appRouter.addRoute('category/:id', function (id) {
-		console.log('creating category ' + id + ' card');
+	appRouter.addController('category/:id', function (id) {
+		var homeCard = tpl('app-card', { parent: box });
+		homeCard.getNodeByName('content').innerHTML = 'I\'m a category ' + id + ' card! :)';
+		$(homeCard.getRootNode()).hide();
+		
+		return {
+			navin: function () {
+				$(homeCard.getRootNode()).show();
+			},
+			
+			navout: function () {
+				$(homeCard.getRootNode()).hide();
+			},
+			
+			dispose: function () {
+				box.removeChild(homeCard.getRootNode());
+			}
+		};
 	});
 	
-	appRouter.addRoute('product/:id', function (id) {
-		console.log('creating product ' + id + ' card');
+	appRouter.addController('product/:id', function (id) {
+		var homeCard = tpl('app-card', { parent: box });
+		homeCard.getNodeByName('content').innerHTML = 'I\'m a product ' + id + ' card! :)';
+		$(homeCard.getRootNode()).hide();
+		
+		return {
+			navin: function () {
+				$(homeCard.getRootNode()).show();
+			},
+			
+			navout: function () {
+				$(homeCard.getRootNode()).hide();
+			},
+			
+			dispose: function () {
+				box.removeChild(homeCard.getRootNode());
+			}
+		};
 	});
 	
 	appRouter.start();
