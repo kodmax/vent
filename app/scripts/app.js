@@ -13,7 +13,7 @@ require.config({
 		'backbone': '.3rd-party/backbone/backbone',
 		'backbone.no-global': '.no-global/backbone',
 		'dom-node': 'services/dom-node/dom-node',
-		'app-router': 'services/jsapp-router',
+		'app-router': '.3rd-party/jsapp-router/dist/jsapp-router',
 		'translate': 'services/translate/t',
 		'exception': 'lib/exception'		
 	},
