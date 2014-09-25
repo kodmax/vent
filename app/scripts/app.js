@@ -38,8 +38,9 @@ require(['dom-templates', 'app-router', 'services/app-router/navigator'], functi
 	document.body.removeChild(document.getElementsByTagName('app-loader')[0]);
 	tpl('app-bar', { parent: document.body });
 	
+	var box = document.body;
 	
-	appRouter.addRoute('', function () {
+	appRouter.addController('', function () {
 		console.log('creating home card');
 	});
 	

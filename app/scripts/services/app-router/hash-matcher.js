@@ -25,7 +25,7 @@ define(['./pattern-regexp'], function(patternRegexp) {
 				
 				var match = route.pattern.exec(hash);
 				if (match) {
-					return { params: match, controller: route.controller };
+					return { params: match, controller: route.controller, options: route.options };
 				}
 			}
 		};

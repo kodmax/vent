@@ -14,16 +14,6 @@ define(['./hash-matcher', './navigator', './controller-driver', './standard-not-
 		var hashMatcher = new HashMatcher(patterns);
 
 		/**
-		 * Same as appRouter.addRoute('', controller);
-		 * @method app-router.AppRouter#setHomeRoute
-		 * @param {app-router.route-controller} controller
-		 * @returns app-router.AppRouter
-		 */
-		this.setHomeRoute = function (controller) {
-			return this.addRoute('', controller);
-		};
-		
-		/**
 		 * @callback app-router.route-controller
 		 * @this app-router.ControllerContext
 		 */
@@ -35,6 +25,17 @@ define(['./hash-matcher', './navigator', './controller-driver', './standard-not-
 		 * @returns app-router.AppRouter
 		 */
 		this.addRoute = function (pattern, controller) {
+			patterns.push({pattern: pattern, controller: controller, options: { trivialController: true }});
+			return this;
+		};
+		
+		/**
+		 * @method app-router.AppRouter#addController
+		 * @param pattern
+		 * @param {app-router.route-controller} controller
+		 * @returns app-router.AppRouter
+		 */
+		this.addController = function (pattern, controller) {
 			patterns.push({pattern: pattern, controller: controller});
 			return this;
 		};
@@ -62,7 +63,7 @@ define(['./hash-matcher', './navigator', './controller-driver', './standard-not-
 					create: function (hash) {
 						var match = hashMatcher.match(hash);
 						if (match) {
-							return new ControllerDriver(hash, match.controller, match.params);
+							return new ControllerDriver(hash, match.controller, match.params, match.options);
 							
 						} else {
 							return new ControllerDriver(hash, standardNotFoundController);

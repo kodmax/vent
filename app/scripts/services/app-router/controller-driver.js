@@ -4,12 +4,17 @@ define(['./event-bus', './controller-context'], function(EventBus, ControllerCon
 	/**
 	 * @class app-router.ControllerDriver
 	 */
-	var ControllerDriver = function (hash, controller, params) {
+	var ControllerDriver = function (hash, controller, params, options) {
+		options = options || {};
+		
 		var eventBus = new EventBus();
 		var controllerContext = new ControllerContext(hash, params, eventBus);
 		
 		this.navin = function () {
 			eventBus.trigger('navin', {}, controllerContext);
+			if (options.trivialController) {
+				controller.apply(controllerContext, params || []);
+			}
 		};
 		
 		this.navout = function () {
@@ -20,7 +25,9 @@ define(['./event-bus', './controller-context'], function(EventBus, ControllerCon
 			eventBus.trigger('dispose', {}, controllerContext);
 		};
 		
-		controller.apply(controllerContext, params || []);
+		if (!options.trivialController) {
+			controller.apply(controllerContext, params || []);
+		}
 	};
 	
 	return ControllerDriver;
