@@ -41,7 +41,9 @@ define([], function() {
 				history.replaceState({ 'state-id': stateId });
 			}
 			
-			previousContext && promise.navout(previousContext);
+			if (previousContext) {
+				promise.navout(previousContext);
+			}
 			promise.navin(context);
 			
 			previousStateTs = currentStateTs;

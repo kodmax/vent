@@ -9,7 +9,9 @@ define([], function() {
 		};
 		
 		this.trigger = function (eventName, event, context) {
-			events [eventName] && events [eventName].call(context, event); 
+			if (events [eventName]) {
+				events [eventName].call(context, event);
+			}
 		};
 	};
 	

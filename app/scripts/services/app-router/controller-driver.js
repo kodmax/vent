@@ -26,7 +26,12 @@ define(['./event-bus', './controller-context'], function(EventBus, ControllerCon
 		};
 		
 		if (!options.trivialController) {
-			controller.apply(controllerContext, params || []);
+			var events = controller.apply(controllerContext, params || []);
+			if (typeof events === 'object') {
+				Object.keys(events).forEach(function (eventName) {
+					eventBus.on(eventName, events [eventName]);
+				});
+			}
 		}
 	};
 	

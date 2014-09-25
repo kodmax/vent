@@ -34,14 +34,30 @@ require.config({
 	}
 });
 
-require(['dom-templates', 'app-router', 'services/app-router/navigator'], function (tpl, appRouter, Navigator) {
+require(['dom-templates', 'app-router', 'jquery'], function (tpl, appRouter, $) {
 	document.body.removeChild(document.getElementsByTagName('app-loader')[0]);
 	tpl('app-bar', { parent: document.body });
 	
 	var box = document.body;
 	
 	appRouter.addController('', function () {
-		console.log('creating home card');
+		var homeCard = tpl('app-card', { parent: box });
+		homeCard.getNodeByName('content').innerHTML = 'I\'m a home card! :)';
+		$(homeCard.getRootNode()).hide();
+		
+		return {
+			navin: function () {
+				$(homeCard.getRootNode()).show();
+			},
+			
+			navout: function () {
+				$(homeCard.getRootNode()).hide();
+			},
+			
+			dispose: function () {
+				box.removeChild(homeCard.getRootNode());
+			}
+		};
 	});
 	
 	appRouter.addRoute('category/:id', function (id) {
