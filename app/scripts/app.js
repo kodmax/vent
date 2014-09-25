@@ -13,9 +13,9 @@ require.config({
 		'backbone': '.3rd-party/backbone/backbone',
 		'backbone.no-global': '.no-global/backbone',
 		'dom-node': 'services/dom-node/dom-node',
-		'app-router': 'services/app-router/router',
+		'app-router': 'services/app-router/f',
 		'translate': 'services/translate/t',
-		'exception': 'lib/exception'
+		'exception': 'lib/exception'		
 	},
 	
 	map: {
@@ -34,8 +34,41 @@ require.config({
 	}
 });
 
-require(['./init-routes', 'dom-templates'], function (initRoutes, tpl) {
+require(['dom-templates', 'app-router', 'services/app-router/navigator'], function (tpl, appRouter, Navigator) {
 	document.body.removeChild(document.getElementsByTagName('app-loader')[0]);
 	tpl('app-bar', { parent: document.body });
-	initRoutes();
+	
+	
+	new Navigator({
+		create: function (url) {
+			console.log('create', url);
+			return { url: url };
+		},
+		navin: function (context) {
+			console.log('navin', context);
+		},
+		navout: function (context) {
+			console.log('navout', context);
+		},
+		dispose: function (context) {
+			console.log('dispose', context);
+		}
+	});
+	
+	
+	appRouter.setHomeRoute(function () {
+		
+	});
+	
+	appRouter.addRoute('category/:id', function (id) {
+		
+	});
+	
+	appRouter.addRoute('product/:id', function (id) {
+		
+	});
+	
+	appRouter.setNotFoundRoute(function () {
+		
+	});
 });
