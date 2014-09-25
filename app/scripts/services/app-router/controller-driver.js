@@ -1,23 +1,26 @@
-define([], function() {
+define(['./event-bus', './controller-context'], function(EventBus, ControllerContext) {
 	'use strict';
 
 	/**
 	 * @class app-router.ControllerDriver
 	 */
 	var ControllerDriver = function (hash, controller, params) {
-		console.log('driver created', hash, controller, params);
+		var eventBus = new EventBus();
+		var controllerContext = new ControllerContext(hash, params, eventBus);
 		
 		this.navin = function () {
-			console.log('driver navin', hash);
+			eventBus.trigger('navin', {}, controllerContext);
 		};
 		
 		this.navout = function () {
-			console.log('driver navout', hash);
+			eventBus.trigger('navout', {}, controllerContext);
 		};
 		
 		this.dispose = function () {
-			console.log('driver dispose', hash);
+			eventBus.trigger('dispose', {}, controllerContext);
 		};
+		
+		controller.apply(controllerContext, params || []);
 	};
 	
 	return ControllerDriver;

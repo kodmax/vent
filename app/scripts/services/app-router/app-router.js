@@ -1,4 +1,4 @@
-define(['./hash-matcher', './navigator', './controller-driver'], function(HashMatcher, Navigator, ControllerDriver) {
+define(['./hash-matcher', './navigator', './controller-driver', './standard-not-found-controller'], function(HashMatcher, Navigator, ControllerDriver, standardNotFoundController) {
 	'use strict';
 
 	/**
@@ -39,10 +39,6 @@ define(['./hash-matcher', './navigator', './controller-driver'], function(HashMa
 			return this;
 		};
 		
-		var notFoundController = function () {
-			(console.warn || console.log) ('AppRouter: route not found');
-		};
-		
 		/**
 		 * @method app-router.AppRouter#setNotFoundRoute
 		 * @param {app-router.route-controller} controller
@@ -53,10 +49,6 @@ define(['./hash-matcher', './navigator', './controller-driver'], function(HashMa
 			return this;
 		};
 	
-		
-		var controller = function (controllerContext) {
-			var context
-		}
 		
 		var navigator;
 		/**
@@ -73,7 +65,7 @@ define(['./hash-matcher', './navigator', './controller-driver'], function(HashMa
 							return new ControllerDriver(hash, match.controller, match.params);
 							
 						} else {
-							return new ControllerDriver(hash, notFoundController);
+							return new ControllerDriver(hash, standardNotFoundController);
 						}
 					},
 					

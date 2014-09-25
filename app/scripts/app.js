@@ -40,15 +40,15 @@ require(['dom-templates', 'app-router', 'services/app-router/navigator'], functi
 	
 	
 	appRouter.addRoute('', function () {
-		
+		console.log('creating home card');
 	});
 	
 	appRouter.addRoute('category/:id', function (id) {
-		
+		console.log('creating category ' + id + ' card');
 	});
 	
 	appRouter.addRoute('product/:id', function (id) {
-		
+		console.log('creating product ' + id + ' card');
 	});
 	
 	appRouter.start();
