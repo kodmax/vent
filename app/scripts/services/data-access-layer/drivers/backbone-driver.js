@@ -15,7 +15,7 @@ define([], function() {
 					return pool [id];
 					
 				} else {
-					return pool [id] = model;
+					return (pool [id] = model);
 				}				
 			};
 			
@@ -64,6 +64,22 @@ define([], function() {
 			
 			this.describe = function () {
 				return { name: name };			
+			};
+			
+			var disposeOne = function (id) {
+				pool [id].clear();
+				delete pool [id];
+			};
+			
+			this.dispose = function (id) {
+				if (id === '*') {
+					Object.keys(pool).forEach(function (id) {
+						disposeOne(id);
+					});
+					
+				} else {
+					disposeOne(id);
+				}
 			};
 			
 			controller.call(this, vent);
