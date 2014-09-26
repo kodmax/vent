@@ -36,11 +36,9 @@ require.config({
 	}
 });
 
-require(['./simple-routes', 'rest', 'data-model/category/category-driver', 'data-model/product/product-driver'], function (simpleRoutes, rest, CategoryDriver, ProductDriver) {
+require(['./simple-routes', 'rest', 'data-models/load-data-models'], function (simpleRoutes, rest, loadDataModels) {
+	loadDataModels();
 	simpleRoutes();
-	
-	rest().resource(CategoryDriver);
-	rest().resource(ProductDriver);
 	
 	rest({ 'category': 1, 'products': { categoryId: 1 } } , function (category, products) {
 		console.log(category, products);
