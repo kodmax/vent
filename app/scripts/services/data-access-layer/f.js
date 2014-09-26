@@ -8,7 +8,7 @@ define(['services/data-access-layer/data-access-layer'], function(DataAccessLaye
 			return rest;
 			
 		} else if (arguments.length === 1) {
-			return rest.getResource(resources);
+			return rest.getDriver(resources);
 			
 		} else if (arguments.length === 2) {
 			return rest.request(resources, success);

@@ -16,7 +16,8 @@ require.config({
 		'app-router': '.3rd-party/jsapp-router/dist/jsapp-router',
 		'translate': 'services/translate/t',
 		'exception': 'lib/exception',
-		'rest': 'services/data-access-layer/f'
+		'rest': 'services/data-access-layer/f',
+		'rest-backbone-driver': 'services/data-access-layer/drivers/backbone-driver'
 	},
 	
 	map: {
@@ -35,8 +36,11 @@ require.config({
 	}
 });
 
-require(['./simple-routes', 'rest'], function (simpleRoutes, rest) {
+require(['./simple-routes', 'rest', 'data-model/category/category-driver', 'data-model/product/product-driver'], function (simpleRoutes, rest, CategoryDriver, ProductDriver) {
 	simpleRoutes();
+	
+	rest().resource(CategoryDriver);
+	rest().resource(ProductDriver);
 	
 	rest({ 'category': 1, 'products': { categoryId: 1 } } , function (category, products) {
 		console.log(category, products);
