@@ -1,4 +1,4 @@
-define(['app-router', 'dom-templates', 'jquery'], function(appRouter, tpl, $) {
+define(['app-router', 'dom-templates', 'jquery', 'rest'], function(appRouter, tpl, $, rest) {
 	'use strict';
 
 	var initRoutes = function () {
@@ -12,6 +12,12 @@ define(['app-router', 'dom-templates', 'jquery'], function(appRouter, tpl, $) {
 			homeCard.getNodeByName('content').innerHTML = 'I\'m a home card! :)';
 			$(homeCard.getRootNode()).hide();
 			
+			rest({ 'categories': '*' }, function (categories) {
+				categories.models.forEach(function (category) {
+					homeCard.getNodeByName('content').innerHTML += JSON.stringify(category.attributes);
+				});
+			});
+
 			return {
 				navin: function () {
 					$(homeCard.getRootNode()).show();
@@ -28,41 +34,51 @@ define(['app-router', 'dom-templates', 'jquery'], function(appRouter, tpl, $) {
 		});
 		
 		appRouter.addController('category/:id', function (id) {
-			var homeCard = tpl('app-card', { parent: box });
-			homeCard.getNodeByName('content').innerHTML = 'I\'m a category ' + id + ' card! :)';
-			$(homeCard.getRootNode()).hide();
+			var categoryCard = tpl('app-card', { parent: box });
+			categoryCard.getNodeByName('content').innerHTML = 'I\'m a category ' + id + ' card! :)';
+			$(categoryCard.getRootNode()).hide();
+			
+			rest({ 'category': id, 'products': { categoryId: id } } , function (category, products) {
+				products.models.forEach(function (product) {
+					categoryCard.getNodeByName('content').innerHTML += JSON.stringify(product.attributes);
+				});
+			});
 			
 			return {
 				navin: function () {
-					$(homeCard.getRootNode()).show();
+					$(categoryCard.getRootNode()).show();
 				},
 				
 				navout: function () {
-					$(homeCard.getRootNode()).hide();
+					$(categoryCard.getRootNode()).hide();
 				},
 				
 				dispose: function () {
-					box.removeChild(homeCard.getRootNode());
+					box.removeChild(categoryCard.getRootNode());
 				}
 			};
 		});
 		
 		appRouter.addController('product/:id', function (id) {
-			var homeCard = tpl('app-card', { parent: box });
-			homeCard.getNodeByName('content').innerHTML = 'I\'m a product ' + id + ' card! :)';
-			$(homeCard.getRootNode()).hide();
+			var productCard = tpl('app-card', { parent: box });
+			productCard.getNodeByName('content').innerHTML = 'I\'m a product ' + id + ' card! :)';
+			$(productCard.getRootNode()).hide();
 			
+			rest({ 'product': id } , function (product) {
+				productCard.getNodeByName('content').innerHTML = JSON.stringify(product.attributes);
+			});
+
 			return {
 				navin: function () {
-					$(homeCard.getRootNode()).show();
+					$(productCard.getRootNode()).show();
 				},
 				
 				navout: function () {
-					$(homeCard.getRootNode()).hide();
+					$(productCard.getRootNode()).hide();
 				},
 				
 				dispose: function () {
-					box.removeChild(homeCard.getRootNode());
+					box.removeChild(productCard.getRootNode());
 				}
 			};
 		});

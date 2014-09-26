@@ -36,15 +36,7 @@ require.config({
 	}
 });
 
-require(['./simple-routes', 'rest', 'data-models/load-data-models'], function (simpleRoutes, rest, loadDataModels) {
+require(['./simple-routes', 'data-models/load-data-models'], function (simpleRoutes, loadDataModels) {
 	loadDataModels();
 	simpleRoutes();
-	
-	rest({ 'category': 1, 'products': { categoryId: 1 } } , function (category, products) {
-		console.log(category, products);
-	});
-	
-	rest({ 'categories': '*' }, function (categories) {
-		console.log(categories);
-	});
 });
