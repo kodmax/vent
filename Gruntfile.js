@@ -31,6 +31,7 @@ module.exports = function (grunt) {
 				app: 'app',
 				scripts: 'app/scripts',
 				styles: 'app/styles',
+				templates: 'app/templates',
 				build: '.build',
 				test: 'test'
 			}
@@ -285,7 +286,7 @@ module.exports = function (grunt) {
 		dom_templates: {
 			compile: {
 				files: {
-					'<%= config.directory.scripts %>/.compiled/templates.js': ['<%= config.directory.scripts %>/**/*.html']
+					'<%= config.directory.scripts %>/.compiled/templates.js': ['<%= config.directory.templates %>/**/*.html']
 				}
 			}
 		}
