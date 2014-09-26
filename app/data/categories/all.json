@@ -1,18 +1,18 @@
-  [
+[
     {
       "id": 1,
-      "name": "Men Accessories",
+      "name": "Men Accessories"
     },
     {
       "id": 2,
-      "name": "Women Accessories",
+      "name": "Women Accessories"
     },
     {
       "id": 3,
-      "name": "Children Accessories",
+      "name": "Children Accessories"
     },
     {
       "id": 4,
-      "name": "Sports Accessories",
+      "name": "Sports Accessories"
     }
-  ]
+]

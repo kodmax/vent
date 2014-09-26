@@ -1,7 +1,7 @@
 define(['backbone'], function(Backbone) {
 	'use strict';
 
-	var CategoryModel = new Backbone.Model({
+	var CategoryModel = Backbone.Model.extend({
 		idAttribute: 'id',
 		
 		url: function () {

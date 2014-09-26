@@ -27,7 +27,16 @@ define(['./request', './event-bus'], function(Request, EventBus) {
 			var tasks = [];
 			for (var i = 0; i < resourceNames.length; i++) {
 				var name = resourceNames [i];
-				tasks.push({ driver: driversByName [name], query: resources [name]});
+				
+				if (typeof resources [name] === 'object') {
+					tasks.push({ res: name, driver: driversByName [name], query: resources [name] });
+					
+				} else if (resources [name] === '*') {
+					tasks.push({ res: name, driver: driversByName [name], query: {} });
+					
+				} else {
+					tasks.push({ res: name, driver: driversByName [name], resId: resources [name] });
+				}
 			}
 			
 			return new Request(tasks).success(success);

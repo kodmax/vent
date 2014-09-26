@@ -1,7 +1,7 @@
-    {
+{
       "id": 5,
       "name": "Shoes",
       "categoryId": 3,
       "price": 20,
       "image": "shoes.png"
-    }
+}

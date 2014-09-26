@@ -1,7 +1,7 @@
 define(['backbone'], function(Backbone) {
 	'use strict';
 
-	var ProductModel = new Backbone.Model({
+	var ProductModel = Backbone.Model.extend({
 		idAttribute: 'id',
 		
 		url: function () {

@@ -1,7 +1,7 @@
-    {
+{
       "id": 3,
       "name": "Wrist Band",
       "categoryId": 2,
       "price": 5,
       "image": "band.png"
-    }
+}

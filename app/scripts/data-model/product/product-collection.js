@@ -1,7 +1,7 @@
 define(['backbone', './product-model'], function(Backbone, Model) {
 	'use strict';
 
-	var ProductCollection = new Backbone.Collection({
+	var ProductCollection = Backbone.Collection.extend({
 		model: Model,
 		
 		initialize: function (models, query) {

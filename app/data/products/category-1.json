@@ -1,4 +1,4 @@
-  [
+[
     {
       "id": 1,
       "name": "Winter Jacket",
@@ -9,8 +9,8 @@
     {
       "id": 2,
       "name": "Wrist Watch",
-      category: 1,
+      "category": 1,
       "price": 30,
       "image": "watch.png"
     }
-  ]
+]

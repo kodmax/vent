@@ -1,7 +1,7 @@
-    {
+{
       "id": 7,
       "name": "Soccer Ball",
       "categoryId": 4,
       "price": 20,
       "image": "soccerball.png"
-    }
+}
