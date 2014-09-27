@@ -1,24 +1,24 @@
-define(['translate', 'rest', 'dom-templates', 'rivets', 'jquery'], function(t, rest, tpl, rivets, $) {
+define(['translate', 'rest', 'dom-templates', 'rivets'], function(t, rest, tpl, rivets) {
 	'use strict';
 
 	var card = {
 		
 		name: 'home',
 		url: '',
+		template: 'home-card',
 
 		controller: function () {
 			var card = this;
+			var rivetsView;
 			
 			rest({ 'categories': '*' }, function (categories) {
-				var homeTpl = tpl('home-card', { parent: card.tpl.getNodeByName('content') });
-				
-				rivets.bind($(homeTpl.getNodeByName('content')), {
+				rivetsView = rivets.bind(card.tpl.getRootNode(), {
 					categories: categories.models
 				});
 			});
 			
 			this.vent.on('dispose', function () {
-				rivets.unbind($(homeTpl.getNodeByName('content')));
+				view.unbind(card.tpl);
 			});
 		}
 	};

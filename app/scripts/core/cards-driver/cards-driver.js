@@ -14,7 +14,9 @@ define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent'], func
 			appRouter.addController(card.url, function () {
 				var vent = new EventBus( { async: true });
 				var cardTpl = tpl('app-card', { parent: box });
-				var cardContext = new CardContext(card, this, vent, cardTpl);
+				var cardContentTpl = tpl(card.template, { parent: cardTpl.getNodeByName('content') });
+				
+				var cardContext = new CardContext(card, this, vent, cardTpl, cardContentTpl);
 				
 				card.controller.apply(cardContext, arguments);
 				

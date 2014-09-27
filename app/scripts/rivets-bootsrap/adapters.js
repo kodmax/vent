@@ -1,7 +1,7 @@
 define(['rivets'], function(rivets) {
 	'use strict';
 
-	var installAdapters = function() {
+	var adapters = function() {
 		rivets.adapters[':'] = {
 		    subscribe : function(obj, keypath, callback) {
 			    obj.on('change:' + keypath, callback)
@@ -18,5 +18,5 @@ define(['rivets'], function(rivets) {
 		};
 	};
 	
-	return installAdapters;
+	return adapters;
 });

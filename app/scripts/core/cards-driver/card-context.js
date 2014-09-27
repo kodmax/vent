@@ -1,9 +1,9 @@
 define([], function() {
 	'use strict';
 
-	var CardContext = function (card, routeContext, vent, tpl) {
+	var CardContext = function (card, routeContext, vent, tpl, contentTpl) {
+		this.tpl = contentTpl;
 		this.vent = vent;
-		this.tpl = tpl;
 	};
 	
 	return CardContext;
