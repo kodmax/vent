@@ -153,6 +153,16 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true, cwd: '<%= config.directory.app %>', src: 'images/**/*.*', dest: '<%= config.directory.build %>'
 				}]
+			},
+			fonts: {				
+				files: [{
+					expand: true, cwd: '<%= config.directory.app %>', src: '.fonts/**/*.*', dest: '<%= config.directory.build %>'
+				}]
+			},
+			data: {				
+				files: [{
+					expand: true, cwd: '<%= config.directory.app %>', src: 'data/**/*.*', dest: '<%= config.directory.build %>'
+				}]
 			}
 		},
 		
@@ -293,7 +303,7 @@ module.exports = function (grunt) {
 	});
 	
 	grunt.registerTask('serve', ['compass', 'jshint', 'karma:dev', 'dom_templates:compile', 'connect:dev', 'watch']);
-	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'compass', 'jshint', 'karma:unit', 'requirejs', 'copy:html', 'copy:images', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build']);
+	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'compass', 'jshint', 'karma:unit', 'requirejs', 'copy', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build']);
 	grunt.registerTask('serve-build', ['connect:build', 'watch:build']);
 	grunt.registerTask('test', ['jshint', 'karma:unit']);
 	grunt.registerTask('doc', ['jsdoc']);
