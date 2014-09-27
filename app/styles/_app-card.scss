@@ -12,3 +12,14 @@ app-card {
         display: block;
     }
 }
+
+.app-card {
+    &__content {
+        display: none;
+    }
+    
+    &__loader {
+        //background: url('../images/card-loader.gif') no-repeat center;
+        height: 10em;
+    }
+}
