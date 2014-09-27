@@ -7,7 +7,7 @@ app-cards {
 }
 
 app-card {
-    @include single-transition(opacity, .5s, cubic-bezier(0, 0.05, 0.3, 1));
+    //@include single-transition(opacity, .5s, cubic-bezier(0, 0.05, 0.3, 1));
     
     position: absolute;
     z-index: -1;

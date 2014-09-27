@@ -1,0 +1,5 @@
+<div tpl-name="product-card" class="product">
+    <h1>{ product:name }</h1>
+    <div class="product__price"><span>{ product:price | currency }</span></div>
+    <div class="product__image"><img rv-src="product:image | gallery-img-url" /></div>
+</div>

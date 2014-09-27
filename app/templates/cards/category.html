@@ -1,3 +1,11 @@
 <div tpl-name="category-card" class="category" tpl-node-name="content">
     <h1>{ category:name }</h1>
+    
+    <div class="products">
+        <div class ="products__product" rv-each-product="products" rv-on-click="open">
+            <h2>{ product:name }</h2>
+            <div class="products__product__price"><span>{ product:price | currency }</span></div>
+            <div class="products__product__image"><img rv-src="product:image | gallery-img-url" /></div>
+        </div>
+    </div>
 </div>

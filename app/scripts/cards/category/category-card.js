@@ -1,4 +1,4 @@
-define(['translate', 'rest', 'rivets'], function(t, rest, rivets) {
+define(['translate', 'rest', 'rivets', 'app-router'], function(t, rest, rivets, appRouter) {
 	'use strict';
 
 	var card = {
@@ -14,7 +14,10 @@ define(['translate', 'rest', 'rivets'], function(t, rest, rivets) {
 			rest({ 'category': id, 'products': { categoryId: id } } , function (category, products) {
 				rivetsView = rivets.bind(card.tpl.getRootNode(), {
 					category: category,
-					products: products.models
+					products: products.models,
+					open: function (event, models) {
+						appRouter.navigate('product/' + models.product.get('id'));
+					}
 				});
 			});
 			

@@ -1,7 +1,7 @@
 define(['./adapters', './formatters'], function(adapters, formatters) {
 	'use strict';
 
-	function init () {
+	var init = function () {
 		adapters();
 		formatters();
 	};
