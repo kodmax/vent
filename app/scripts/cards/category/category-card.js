@@ -18,7 +18,7 @@ define(['translate', 'rest', 'rivets', 'app-router', 'card-url', 'backbone', 'ap
 					category: category,
 					products: products.models,
 					open: function (event, models) {
-						appRouter.navigate(cardUrl('product', models.product.get('id')));
+						appRouter.navigate(cardUrl('product', { id: models.product.get('id') }));
 					}
 				});
 			});

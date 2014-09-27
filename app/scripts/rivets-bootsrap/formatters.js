@@ -3,7 +3,7 @@ define([ 'rivets', 'exception', 'card-url'], function(rivets, Exception, cardUrl
 
 	var formatters = function() {
 		rivets.formatters['card-link'] = function(id, cardname) {
-			return cardUrl(cardname, id);
+			return cardUrl(cardname, { id: id });
 		};
 
 		rivets.formatters.currency = {

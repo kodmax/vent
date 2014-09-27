@@ -3,13 +3,21 @@ define([], function() {
 
 	var CardUrl = function () {
 		
+		var urls = {};
+		
 		this.registerCard = function (card) {
-			//console.log('card url register card', card);
+			urls [card.name] = card.url;
 		};
 		
 		this.buildUrl = function (cardName, query) {
-			var id = query;
-			return '#' + cardName + '/' + id;
+			if (urls [cardName]) {
+				return '#' + urls [cardName].replace(/:([\w-]+)/g, function (param, key) {
+					return query [key];
+				});
+				
+			} else {
+				return '#' + cardName;				
+			}
 		};
 	};
 	

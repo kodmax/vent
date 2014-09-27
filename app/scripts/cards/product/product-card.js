@@ -18,7 +18,7 @@ define(['translate', 'rest', 'rivets', 'card-url', 'backbone', 'appbar'], functi
 					product: product
 				});
 				
-				nav.set('backURL', cardUrl('category', product.get('categoryId')));
+				nav.set('backURL', cardUrl('category', { id: product.get('categoryId') }));
 			});
 			
 			this.vent.on('dispose', function () {
