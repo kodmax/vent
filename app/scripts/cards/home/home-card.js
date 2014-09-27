@@ -15,6 +15,8 @@ define(['translate', 'rest', 'dom-templates', 'rivets'], function(t, rest, tpl, 
 				rivetsView = rivets.bind(card.tpl.getRootNode(), {
 					categories: categories.models
 				});
+				
+				card.setLoaded();
 			});
 			
 			this.vent.on('dispose', function () {

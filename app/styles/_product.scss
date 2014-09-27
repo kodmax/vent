@@ -1,8 +1,33 @@
 @import "compass/css3/transition";
 @import "root";
 
+$product-background-color: #EAEAEB;
 .products {
+
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    
     &__product {
         cursor: pointer;
+        padding: 1em;
+        margin: 0.5em;
+        
+        flex: 1 1 auto;
+        max-width: 16em;
+        
+        img {
+            max-width: 15em;
+            max-height: 15em;
+        }
+    }
+}
+
+.product {
+    img {
+        max-width: 15em;
+        max-height: 15em;
     }
 }

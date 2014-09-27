@@ -19,8 +19,6 @@ define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core
 				
 				card.controller.apply(cardContext, arguments);
 				
-				cardTpl.getNodeByName('content').appendChild(cardContentTpl.getRootNode());
-				
 				return {
 					navin: function () {
 						document.body.scrollTop = 0;

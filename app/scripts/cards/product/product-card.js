@@ -16,6 +16,7 @@ define(['translate', 'rest', 'rivets', 'card-url'], function(t, rest, rivets, ca
 					product: product
 				});
 				
+				card.setLoaded();
 				card.setNavBack(cardUrl('category', { id: product.get('categoryId') }));
 			});
 			

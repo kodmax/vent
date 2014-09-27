@@ -10,7 +10,7 @@ define(['translate', 'rest', 'rivets', 'app-router', 'card-url'], function(t, re
 		controller: function (id) {
 			var card = this;
 			var rivetsView;
-
+			
 			rest({ 'category': id, 'products': { categoryId: id } } , function (category, products) {
 				rivetsView = rivets.bind(card.tpl.getRootNode(), {
 					category: category,
@@ -19,6 +19,8 @@ define(['translate', 'rest', 'rivets', 'app-router', 'card-url'], function(t, re
 						appRouter.navigate(cardUrl('product', { id: models.product.get('id') }));
 					}
 				});
+				
+				card.setLoaded();
 			});
 			
 			this.vent.on('dispose', function () {
