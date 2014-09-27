@@ -39,7 +39,9 @@ require.config({
 	}
 });
 
-require(['./simple-routes', 'data-models/load-data-models'], function (simpleRoutes, loadDataModels) {
+require(['./register-app-cards', 'data-models/load-data-models', 'app-router'], function (registerAppCards, loadDataModels, appRouter) {
+	registerAppCards();
 	loadDataModels();
-	simpleRoutes();
+	
+	appRouter.start();
 });
