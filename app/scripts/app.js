@@ -21,7 +21,8 @@ require.config({
 		'd-query': 'services/dquery/f',
 		'overscore': 'services/overscore/f',
 		'vent': 'services/event-bus/event-bus',
-		'rivets': '.3rd-party/rivets/dist/rivets'
+		'rivets': '.3rd-party/rivets/dist/rivets',
+		'card-url': 'core/card-url/f'
 	},
 	
 	map: {

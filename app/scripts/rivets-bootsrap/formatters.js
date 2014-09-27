@@ -1,9 +1,9 @@
-define([ 'rivets', 'exception' ], function(rivets, Exception) {
+define([ 'rivets', 'exception', 'card-url'], function(rivets, Exception, cardUrl) {
 	'use strict';
 
 	var formatters = function() {
 		rivets.formatters['card-link'] = function(id, cardname) {
-			return '#' + cardname + '/' + id;
+			return cardUrl(cardname, id);
 		};
 
 		rivets.formatters.currency = {

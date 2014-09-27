@@ -1,4 +1,4 @@
-define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent'], function(tpl, $, appRouter, CardContext, EventBus) {
+define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core/card-url/card-url'], function(tpl, $, appRouter, CardContext, EventBus, cardUrl) {
 	'use strict';
 
 	var CardsDriver = function () {
@@ -10,6 +10,7 @@ define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent'], func
 		var box = appCardsTpl.getNodeByName('app-cards-container');
 
 		this.registerCard = function (card) {
+			cardUrl.registerCard(card);
 			
 			appRouter.addController(card.url, function () {
 				var vent = new EventBus( { async: true });
