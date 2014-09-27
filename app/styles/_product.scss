@@ -1,0 +1,8 @@
+@import "compass/css3/transition";
+@import "root";
+
+.products {
+    &__product {
+        cursor: pointer;
+    }
+}

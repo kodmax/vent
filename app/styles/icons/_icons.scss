@@ -1,0 +1,15 @@
+@import "root";
+
+.icon {
+
+    &__appbar-back:before {
+        font-family: 'FontAwesome';
+        content: "\f053";
+    }
+    
+    &__shopping-cart:before {
+        font-family: 'FontAwesome';
+        content: "\f07a";
+    }
+    
+}

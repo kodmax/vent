@@ -38,3 +38,26 @@ app-bar {
 	}
 }
 
+.appbar {
+    &__nav {
+       font-size: 2em;
+       float: left;
+       
+       &__back:hover {
+        background-color: darken($appbar-background-color, 5%);
+       }
+    }
+    
+    &__system-buttons {
+       font-size: 2em;
+       float: right;
+       
+       * {
+        padding: 0 0.2em;
+       }
+       
+       *:hover {
+           background-color: darken($appbar-background-color, 5%);
+       }
+    }
+}
