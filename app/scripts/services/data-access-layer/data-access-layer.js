@@ -1,4 +1,4 @@
-define(['./request', './event-bus'], function(Request, EventBus) {
+define(['./request', 'vent'], function(Request, EventBus) {
 	'use strict';
 
 	var DataAccessLayer = function (options) {

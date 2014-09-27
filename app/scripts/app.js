@@ -18,8 +18,9 @@ require.config({
 		'exception': 'lib/exception',
 		'rest': 'services/data-access-layer/f',
 		'rest-backbone-driver': 'services/data-access-layer/drivers/backbone-driver',
-		'dom-manipulator': 'services/dquery/f',
-		'overscore': 'services/overscore/f'
+		'd-query': 'services/dquery/f',
+		'overscore': 'services/overscore/f',
+		'vent': 'services/event-bus/event-bus'
 	},
 	
 	map: {
@@ -38,8 +39,7 @@ require.config({
 	}
 });
 
-require(['./simple-routes', 'data-models/load-data-models','dom-manipulator'], function (simpleRoutes, loadDataModels, $) {
-	console.log($('body'));
+require(['./simple-routes', 'data-models/load-data-models'], function (simpleRoutes, loadDataModels) {
 	loadDataModels();
 	simpleRoutes();
 });
