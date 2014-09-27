@@ -41,11 +41,14 @@ require.config({
 	}
 });
 
-require(['./register-app-cards', 'data-models/load-data-models', 'app-router', 'rivets-bootsrap/init'], function (registerAppCards, loadDataModels, appRouter, rivetsBootstrap) {
+require(['./register-app-cards', 'data-models/load-data-models', 'app-router', 'rivets-bootsrap/init', 'modules/appbar/appbar-setup'], function (registerAppCards, loadDataModels, appRouter, rivetsBootstrap, appbarSetup) {
 	rivetsBootstrap();
 	
 	registerAppCards();
 	loadDataModels();
+	appbarSetup();
 	
 	appRouter.start();
+	
+	document.body.removeChild(document.getElementsByTagName('app-loader')[0]);
 });

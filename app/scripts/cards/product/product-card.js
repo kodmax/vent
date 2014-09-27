@@ -20,6 +20,10 @@ define(['translate', 'rest', 'rivets'], function(t, rest, rivets) {
 			this.vent.on('dispose', function () {
 				rivetsView.unbind(card.tpl);
 			});
+			
+			this.vent.on('navin', function () {
+				
+			});
 		}
 	};
 	

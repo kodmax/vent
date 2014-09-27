@@ -2,10 +2,7 @@ define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core
 	'use strict';
 
 	var CardsDriver = function () {
-		document.body.removeChild(document.getElementsByTagName('app-loader')[0]);
-		
 		var appCardsTpl = tpl('app-cards', { parent: document.body });
-		tpl('app-bar', { parent: document.body });
 		
 		var box = appCardsTpl.getNodeByName('app-cards-container');
 
@@ -15,11 +12,13 @@ define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core
 			appRouter.addController(card.url, function () {
 				var vent = new EventBus( { async: true });
 				var cardTpl = tpl('app-card', { parent: box });
-				var cardContentTpl = tpl(card.template, { parent: cardTpl.getNodeByName('content') });
+				var cardContentTpl = tpl(card.template);
 				
 				var cardContext = new CardContext(card, this, vent, cardTpl, cardContentTpl);
 				
 				card.controller.apply(cardContext, arguments);
+				
+				cardTpl.getNodeByName('content').appendChild(cardContentTpl.getRootNode());
 				
 				return {
 					navin: function () {
