@@ -23,6 +23,7 @@ define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core
 				
 				return {
 					navin: function () {
+						document.body.scrollTop = 0;
 						$(cardTpl.getRootNode()).addClass('active');
 						appbar.setNavModel(nav);
 						vent.trigger('navin');
