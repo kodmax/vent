@@ -98,7 +98,7 @@ module.exports = function (grunt) {
 			},
 			
 			dom_templates: {
-				files: ['<%= config.directory.scripts %>/**/*.html'],
+				files: ['<%= config.directory.templates %>/**/*.html'],
 				options: { livereload: true },
 				tasks: ['dom_templates:compile']
 			}
