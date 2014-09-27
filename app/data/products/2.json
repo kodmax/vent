@@ -1,7 +1,7 @@
 {
       "id": 2,
       "name": "Wrist Watch",
-      "category": 1,
+      "categoryId": 1,
       "price": 30,
       "image": "watch.png"
 }
