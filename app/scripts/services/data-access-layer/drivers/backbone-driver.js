@@ -82,6 +82,10 @@ define([], function() {
 				}
 			};
 			
+			this.fish = function (id) {
+				return pool [id];
+			};
+			
 			controller.call(this, vent);
 		};
 		

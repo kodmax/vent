@@ -20,7 +20,8 @@ require.config({
 		'rest-backbone-driver': 'services/data-access-layer/drivers/backbone-driver',
 		'd-query': 'services/dquery/f',
 		'overscore': 'services/overscore/f',
-		'vent': 'services/event-bus/event-bus'
+		'vent': 'services/event-bus/event-bus',
+		'rivets': '.3rd-party/rivets/dist/rivets'
 	},
 	
 	map: {
@@ -39,7 +40,9 @@ require.config({
 	}
 });
 
-require(['./register-app-cards', 'data-models/load-data-models', 'app-router'], function (registerAppCards, loadDataModels, appRouter) {
+require(['./register-app-cards', 'data-models/load-data-models', 'app-router', 'rivets-bootsrap/init'], function (registerAppCards, loadDataModels, appRouter, rivetsBootstrap) {
+	rivetsBootstrap();
+	
 	registerAppCards();
 	loadDataModels();
 	
