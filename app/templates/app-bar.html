@@ -1,7 +1,12 @@
 <app-bar tpl-name="app-bar">
 
 <div class="appbar__nav">
-    <div class="appbar__nav__back"><a class="icon__appbar-back" rv-href="nav:backURL">&lt;</a></div>
+    <div rv-if="model:nav:backURL" class="appbar__nav__back"><a class="icon__appbar-back" rv-href="model:nav:backURL">&lt;</a></div>
 </div>
 
+<div class="appbar__system-buttons">
+    <div rv-each-systembutton="model:system-buttons" class="appbar__system-button">
+        <a rv-class="systembutton:class" rv-href="systembutton:link">B</a>
+    </div>
+</div>
 </app-bar>

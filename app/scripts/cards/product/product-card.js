@@ -1,4 +1,4 @@
-define(['translate', 'rest', 'rivets'], function(t, rest, rivets) {
+define(['translate', 'rest', 'rivets', 'card-url', 'backbone', 'appbar'], function(t, rest, rivets, cardUrl, Backbone, appbar) {
 	'use strict';
 
 	var card = {
@@ -11,18 +11,22 @@ define(['translate', 'rest', 'rivets'], function(t, rest, rivets) {
 			var card = this;
 			var rivetsView;
 			
+			var nav = new Backbone.Model({ backURL: '#' });
+
 			rest({ 'product': id } , function (product) {
 				rivetsView = rivets.bind(card.tpl.getRootNode(), {
 					product: product
 				});
+				
+				nav.set('backURL', cardUrl('category', product.get('categoryId')));
 			});
 			
 			this.vent.on('dispose', function () {
 				rivetsView.unbind(card.tpl);
 			});
-			
+
 			this.vent.on('navin', function () {
-				
+				appbar.setNavModel(nav);
 			});
 		}
 	};

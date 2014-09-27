@@ -1,6 +1,7 @@
 @import "root";
 
 $app-background-color: white;
+$link-color: rgb(41, 33, 33);
 
 * {
 	padding: 0;
@@ -30,6 +31,8 @@ p {
 	color: $default-text-color;
 }
 
-a {
+a, a:visited {
+    color: $link-color;
     cursor: pointer;
+    text-decoration: none;
 }

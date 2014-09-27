@@ -1,4 +1,4 @@
-define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core/card-url/card-url'], function(tpl, $, appRouter, CardContext, EventBus, cardUrl) {
+define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core/card-url/card-url', './card-appbar'], function(tpl, $, appRouter, CardContext, EventBus, cardUrl, CardAppbar) {
 	'use strict';
 
 	var CardsDriver = function () {

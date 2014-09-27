@@ -22,7 +22,8 @@ require.config({
 		'overscore': 'services/overscore/f',
 		'vent': 'services/event-bus/event-bus',
 		'rivets': '.3rd-party/rivets/dist/rivets',
-		'card-url': 'core/card-url/f'
+		'card-url': 'core/card-url/f',
+		'appbar': 'core/appbar/f'
 	},
 	
 	map: {
@@ -41,12 +42,12 @@ require.config({
 	}
 });
 
-require(['./register-app-cards', 'data-models/load-data-models', 'app-router', 'rivets-bootsrap/init', 'modules/appbar/appbar-setup'], function (registerAppCards, loadDataModels, appRouter, rivetsBootstrap, appbarSetup) {
+require(['./register-app-cards', 'data-models/load-data-models', 'app-router', 'rivets-bootsrap/init', 'appbar'], function (registerAppCards, loadDataModels, appRouter, rivetsBootstrap, appbar) {
 	rivetsBootstrap();
 	
 	registerAppCards();
 	loadDataModels();
-	appbarSetup();
+	appbar.init();
 	
 	appRouter.start();
 	
