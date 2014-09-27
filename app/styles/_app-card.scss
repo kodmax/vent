@@ -16,7 +16,7 @@ app-card {
     
     &.active {
         display: block;
-        z-index: 0;
+        z-index: auto;
         opacity: 1;    
     }
 }

@@ -1,4 +1,4 @@
-define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core/card-url/card-url', './card-appbar'], function(tpl, $, appRouter, CardContext, EventBus, cardUrl, CardAppbar) {
+define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core/card-url/card-url', 'backbone', 'appbar'], function(tpl, $, appRouter, CardContext, EventBus, cardUrl, Backbone, appbar) {
 	'use strict';
 
 	var CardsDriver = function () {
@@ -13,8 +13,9 @@ define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core
 				var vent = new EventBus( { async: true });
 				var cardTpl = tpl('app-card', { parent: box });
 				var cardContentTpl = tpl(card.template);
+				var nav = new Backbone.Model({ backURL: '#' });
 				
-				var cardContext = new CardContext(card, this, vent, cardTpl, cardContentTpl);
+				var cardContext = new CardContext(card, this, vent, cardTpl, cardContentTpl, nav);
 				
 				card.controller.apply(cardContext, arguments);
 				
@@ -23,6 +24,7 @@ define(['dom-templates', 'jquery', 'app-router', './card-context', 'vent', 'core
 				return {
 					navin: function () {
 						$(cardTpl.getRootNode()).addClass('active');
+						appbar.setNavModel(nav);
 						vent.trigger('navin');
 					},
 					

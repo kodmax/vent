@@ -1,4 +1,4 @@
-define(['translate', 'rest', 'dom-templates', 'rivets', 'backbone', 'appbar'], function(t, rest, tpl, rivets, Backbone, appbar) {
+define(['translate', 'rest', 'dom-templates', 'rivets'], function(t, rest, tpl, rivets) {
 	'use strict';
 
 	var card = {
@@ -11,8 +11,6 @@ define(['translate', 'rest', 'dom-templates', 'rivets', 'backbone', 'appbar'], f
 			var card = this;
 			var rivetsView;
 			
-			var nav = new Backbone.Model({ backURL: false });
-
 			rest({ 'categories': '*' }, function (categories) {
 				rivetsView = rivets.bind(card.tpl.getRootNode(), {
 					categories: categories.models
@@ -23,9 +21,7 @@ define(['translate', 'rest', 'dom-templates', 'rivets', 'backbone', 'appbar'], f
 				view.unbind(card.tpl);
 			});
 			
-			this.vent.on('navin', function () {
-				appbar.setNavModel(nav);
-			});
+			this.setNavBack(false);
 		}
 	};
 	
