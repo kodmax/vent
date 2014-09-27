@@ -5,5 +5,12 @@
       "categoryId": 3,
       "price": 20,
       "image": "shoes.png"
+    },
+    {
+      "id": 6,
+      "name": "Kids Scraf",
+      "categoryId": 3,
+      "price": 10,
+      "image": "scraf.png"
     }
 ]
