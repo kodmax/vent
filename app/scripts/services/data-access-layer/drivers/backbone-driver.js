@@ -59,7 +59,7 @@ define([], function() {
 					},
 					
 					error: function (bb, xhr, req) {
-						if (xhr.status === 0) {
+						if ((xhr.status === 0) || (xhr.status === 408)) {
 							vent.trigger('offline');
 						}
 						fail.apply(this, arguments);
