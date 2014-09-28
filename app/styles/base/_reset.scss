@@ -34,10 +34,24 @@ a, a:visited {
     text-decoration: none;
 }
 
-button {
-    border: 0;
-    font-size: 1.5em;
-    padding: .3em;
-    opacity: .9;
 
+button:hover {
+    opacity: 1;
+}
+
+button {
+    background-color: $button-bg-color;
+    border: .1em solid darken($button-bg-color, 10%);
+    font-size: 1.5em;
+    padding: .3em 1em;
+    opacity: .9;
+    border-radius: 0.5em;
+    outline: none;
+    cursor: pointer;
+}
+
+
+h1 {
+    vertical-align: baseline;
+    font-size: $h1-font-size;
 }
