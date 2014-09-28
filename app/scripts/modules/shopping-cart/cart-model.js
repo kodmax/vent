@@ -5,14 +5,21 @@ define(['backbone', 'modules/shopping-cart/item', 'modules/shopping-cart/shoppin
 		defaults: {
 			productsCount: 0
 		},
+		updateTotals: function () {
+			var ammount = 0;
+			var count = 0;
+			
+			_.each(shoppingList.models, function (item) {
+				ammount += item.get('ammount');
+				count += item.get('quantity');
+			});
+			
+			this.set('productsCount', count);
+			this.set('totalAmmount', ammount);			
+		},
 		initialize: function () {
-			shoppingList.on('add remove change reset', function () {
-				var count = 0;
-				_.each(shoppingList.models, function (item) {
-					count += item.get('quantity');
-				});
-				this.set('productsCount', count);
-			}, this);
+			shoppingList.on('add remove change reset', this.updateTotals, this);
+			this.updateTotals();
 		}
 	});
 	

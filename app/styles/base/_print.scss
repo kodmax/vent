@@ -1,0 +1,16 @@
+@import "root";
+
+@media print {
+
+    app-bar {
+        visibility: hidden;
+    }
+    
+    .no-print {
+        display: none;
+    }
+    
+    .print {
+        display: block;
+    }
+}

@@ -1,0 +1,45 @@
+@import "root";
+
+.shopping-cart {
+    padding: 0 $title-space-left 0 $title-space-left;
+
+    &__list {
+        padding: 1em 0 0 0;
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        th {
+            text-align: left;
+            font-weight: normal;
+            color: lighten($default-text-color, 30%);
+            font-size: 0.7em;            
+        }
+        
+        td, th {
+            padding: .2em 2em .2em 0;
+            height: 4em;
+            box-sizing: border-box;
+            border-bottom: 0.1em solid black;
+        }
+        
+        thead tr th {
+            border-bottom: 0.2em solid black;
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+            font-size: 1.2em;
+        }
+        
+        img {
+            max-width: 3em;
+            max-height: 3em;
+        }
+        
+        &__place-the-order {
+            text-align: center;
+        }
+    }
+}

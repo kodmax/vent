@@ -21,6 +21,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-stonejs');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-jsdoc');
+	//grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-mocha-test');
 	grunt.loadNpmTasks('grunt-dom-templates');
 	
@@ -110,6 +111,13 @@ module.exports = function (grunt) {
 				cssDir: '<%= config.directory.tmp %>/css'
 			},
 			dist: {}
+		},
+		
+		sass: {
+			dist: {
+				src: ['<%= config.directory.styles %>/**/*.scss'],
+				dest: '<%= config.directory.tmp %>/css/main2-sass.css'
+			}
 		},
 		
 		jshint: {

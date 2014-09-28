@@ -29,7 +29,10 @@ define(['./request', 'vent'], function(Request, EventBus) {
 			for (var i = 0; i < resourceNames.length; i++) {
 				var name = resourceNames [i];
 				
-				if (typeof resources [name] === 'object') {
+				if (resources [name] instanceof Array) {
+					tasks.push({ res: name, driver: driversByName [name], resIds: resources [name] });
+					
+				} else if (typeof resources [name] === 'object') {
 					tasks.push({ res: name, driver: driversByName [name], query: resources [name] });
 					
 				} else if (resources [name] === '*') {

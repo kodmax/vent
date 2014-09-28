@@ -8,7 +8,7 @@ define([ 'rivets', 'exception', 'card-url', 'translate'], function(rivets, Excep
 
 		rivets.formatters.currency = {
 		    read : function(value) {
-			    return '$' + value.toFixed(2);
+			    return '$' + (value || 0).toFixed(2);
 		    }
 		};
 		
