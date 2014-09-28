@@ -42,12 +42,14 @@ require.config({
 	}
 });
 
-require(['./register-app-cards', 'data-models/load-data-models', 'app-router', 'rivets-bootsrap/init', 'appbar'], function (registerAppCards, loadDataModels, appRouter, rivetsBootstrap, appbar) {
+require(['./register-app-cards', 'data-models/load-data-models', 'app-router', 'rivets-bootsrap/init', 'appbar', 'core/offline-mode/no-network'], function (registerAppCards, loadDataModels, appRouter, rivetsBootstrap, appbar, noNetworkHandler) {
 	rivetsBootstrap();
 	
 	registerAppCards();
 	loadDataModels();
 	appbar.init();
+	
+	noNetworkHandler();	
 	
 	appRouter.start();
 	

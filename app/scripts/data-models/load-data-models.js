@@ -3,7 +3,7 @@ define(['rest', 'data-models/category/category-driver', 'data-models/product/pro
 
 	var loadDataModels = function () {
 		rest().resource(CategoryDriver);
-		rest().resource(ProductDriver);		
+		rest().resource(ProductDriver);
 	};
 	
 	return loadDataModels;
