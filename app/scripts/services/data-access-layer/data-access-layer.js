@@ -5,6 +5,7 @@ define(['./request', 'vent'], function(Request, EventBus) {
 		var vent = new EventBus();
 		var driversByName = {};
 		var drivers = [];
+		var inst = this;
 		
 		this.resource = function (Driver) {
 			var driver = new Driver(vent);
@@ -45,6 +46,20 @@ define(['./request', 'vent'], function(Request, EventBus) {
 		this.getDriver = function (name) {
 			return driversByName [name];
 		};
+		
+		
+		var cbOffline = function () {};
+		
+		this.onOffline = function (cb) {
+			if (typeof cb === 'function') {
+				cbOffline = cb;
+			}
+		};
+		
+		vent.on('offline', function (event) {
+			console.warn('No network connection');
+			cbOffline.call(inst, event);
+		});
 	};
 	
 	return DataAccessLayer;

@@ -20,7 +20,6 @@ define([], function() {
 			};
 			
 			this.create = function (entity, success, fail) {
-				
 			};
 			
 			this.getById = function (id, success, fail) {
@@ -31,7 +30,10 @@ define([], function() {
 						success(marshal(model));
 					},
 					
-					error: function () {
+					error: function (bb, xhr, req) {
+						if (xhr.status === 0) {
+							vent.trigger('offline');
+						}
 						fail.apply(this, arguments);
 					}
 				});
@@ -56,7 +58,10 @@ define([], function() {
 						success(new Collection(marshaled, query));
 					},
 					
-					error: function () {
+					error: function (bb, xhr, req) {
+						if (xhr.status === 0) {
+							vent.trigger('offline');
+						}
 						fail.apply(this, arguments);
 					}
 				});

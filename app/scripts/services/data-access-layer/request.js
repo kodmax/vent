@@ -8,10 +8,12 @@ define([], function() {
 		
 		this.success = function (success) {
 			onSuccess = success;
+			return this;
 		};
 		
 		this.error = function (error) {
 			onFail = error;
+			return this;
 		};
 
 		var successCount = 0;
