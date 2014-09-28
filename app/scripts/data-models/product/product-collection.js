@@ -5,7 +5,13 @@ define(['backbone', './product-model'], function(Backbone, Model) {
 		model: Model,
 		
 		initialize: function (models, query) {
-			this.url = 'data/products/category-' + query.categoryId + '.json';
+			// the below is simplified for json files.
+			if (query instanceof Array) {
+				this.url = 'data/products/all.json';
+				
+			} else {
+				this.url = 'data/products/category-' + query.categoryId + '.json';	
+			}		
 		}
 	});
 	

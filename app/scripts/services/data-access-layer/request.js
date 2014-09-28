@@ -38,9 +38,12 @@ define([], function() {
 			if (typeof task.query === 'object') {
 				task.driver.query(task.query, success, fail);
 				
+			} else if (task.resIds instanceof Array) {
+				task.driver.query(task.resIds, success, fail);
+				
 			} else {
 				task.driver.getById(task.resId, success, fail);
-			}			
+			}
 		};
 		
 		for (var i = 0; i < tasks.length; i++) {
