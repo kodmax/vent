@@ -1,7 +1,5 @@
-@import "compass/css3/transition";
 @import "root";
 
-$product-background-color: #EAEAEB;
 .products {
 
     display: flex;
@@ -26,7 +24,25 @@ $product-background-color: #EAEAEB;
 }
 
 .product {
+
+    h1 {
+        padding: .3em 0 0 0.5em;
+        display: inline-block;
+        vertical-align: baseline;
+    }
+    
+    &__price {
+        display: inline-block;
+        vertical-align: super;
+        font-size: 1.4em;
+        padding-left: 0.5em;
+        color: lighten($default-text-color, 40%);
+    }
+
     img {
+        padding: 0.3em 0.5em 0em 0.5em ;
+        box-sizing: border-box;
         max-width: 100%;
     }
+    
 }

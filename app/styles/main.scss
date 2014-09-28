@@ -1,5 +1,6 @@
 @import "root";
-@import "reset";
+@import "base/reset";
+@import "base/text";
 
 @import "fonts/font-awesome";
 @import "fonts/open-sans";
@@ -10,8 +11,6 @@
 @import "category-card/category-card";
 @import "product-card/product";
 
-@import "layout";
-@import "text";
-@import "appbar";
-@import "apploader";
-@import "app-card";
+@import "app/appbar";
+@import "app/apploader";
+@import "app/app-card";
