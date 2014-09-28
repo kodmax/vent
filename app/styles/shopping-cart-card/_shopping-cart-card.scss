@@ -2,18 +2,23 @@
 
 .shopping-cart {
     padding: 0 $title-space-left 0 $title-space-left;
-
+    
+    h1 { 
+        text-align: center;
+    }
+    
     &__list {
         padding: 1em 0 0 0;
         
         table {
             border-collapse: collapse;
+            margin: auto;
         }
         
         th {
             text-align: left;
             font-weight: normal;
-            color: lighten($default-text-color, 30%);
+            color: $less-important-text-color;
             font-size: 0.7em;            
         }
         
@@ -40,6 +45,14 @@
         
         &__place-the-order {
             text-align: center;
+            padding-bottom: .5em;
+        }
+    }
+    
+    &__no-items {
+        p {
+            padding-top: 1em;
+            color: $less-important-text-color;
         }
     }
 }
