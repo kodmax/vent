@@ -48,18 +48,12 @@ define(['./request', 'vent'], function(Request, EventBus) {
 		};
 		
 		
-		var cbOffline = function () {};
-		
-		this.onOffline = function (cb) {
-			if (typeof cb === 'function') {
-				cbOffline = cb;
-			}
-		};
-		
 		vent.on('offline', function (event) {
 			console.warn('No network connection');
-			cbOffline.call(inst, event);
 		});
+		
+		this.off = vent.off;
+		this.on = vent.on;
 	};
 	
 	return DataAccessLayer;
