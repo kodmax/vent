@@ -1,4 +1,4 @@
-define(['translate', 'rest', 'rivets', 'card-url'], function(t, rest, rivets, cardUrl) {
+define(['translate', 'rest', 'rivets', 'card-url', 'cart-model'], function(t, rest, rivets, cardUrl, cart) {
 	'use strict';
 
 	var card = {
@@ -13,7 +13,10 @@ define(['translate', 'rest', 'rivets', 'card-url'], function(t, rest, rivets, ca
 
 			rest({ 'product': id } , function (product) {
 				rivetsView = rivets.bind(card.tpl.getRootNode(), {
-					product: product
+					product: product,
+					addToCart: function (event, models) {
+						cart.get('shoppingList').addItem(models.product);
+					}
 				});
 				
 				card.setLoaded();

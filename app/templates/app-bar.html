@@ -6,7 +6,9 @@
 
 <div class="appbar__system-buttons">
     <div rv-each-systembutton="model:system-buttons" class="appbar__system-button">
-        <a rv-class="systembutton:class" rv-href="systembutton:link"></a>
+        <a rv-class="systembutton:class" rv-href="systembutton:link">
+            <span rv-if="systembutton:count" class="appbar__system-button__counter">{ systembutton:count }</span>
+        </a>
     </div>
 </div>
 </app-bar>

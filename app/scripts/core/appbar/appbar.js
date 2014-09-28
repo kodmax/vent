@@ -1,4 +1,4 @@
-define(['dom-templates', './appbar-model', 'rivets', 'backbone', 'card-url'], function(tpl, AppbarModel, rivets, Backbone, cardUrl) {
+define(['dom-templates', './appbar-model', 'rivets', 'backbone', 'card-url', 'cart-model'], function(tpl, AppbarModel, rivets, Backbone, cardUrl, cart) {
 	'use strict';
 
 	var AppBar = function () {
@@ -15,10 +15,17 @@ define(['dom-templates', './appbar-model', 'rivets', 'backbone', 'card-url'], fu
 		
 		
 		this.init = function () {
-			this.addSystemButton(new Backbone.Model({
+			var cartSystemButton = new Backbone.Model({
 				link: cardUrl('shopping-cart'),
-				'class': 'icon__shopping-cart'
-			}));
+				'class': 'icon__shopping-cart',
+				count: cart.get('productsCount')
+			});
+			
+			cart.on('change:productsCount', function (cartModel) {
+				cartSystemButton.set('count', cartModel.get('productsCount'));
+			});
+			
+			this.addSystemButton(cartSystemButton);
 			
 			rivets.bind(appbarTpl.getRootNode(), {
 				model: appbarModel

@@ -23,7 +23,10 @@ require.config({
 		'vent': 'services/event-bus/event-bus',
 		'rivets': '.3rd-party/rivets/dist/rivets',
 		'card-url': 'core/card-url/f',
-		'appbar': 'core/appbar/f'
+		'appbar': 'core/appbar/f',
+		
+		
+		'cart-model': 'modules/shopping-cart/cart-model'
 	},
 	
 	map: {

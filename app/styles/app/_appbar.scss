@@ -56,4 +56,21 @@ app-bar {
            background-color: darken($appbar-background-color, 5%);
        }
     }
+    
+    &__system-button {
+        position: relative;
+        
+        &__counter {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            color: black;
+            display: block;
+            background: $system-button-counter-bg;
+            font-size: 0.4em;
+            border-radius: 0.4em;
+            opacity: 0.8;
+            padding: 0 0.5em;
+        }        
+    }
 }
