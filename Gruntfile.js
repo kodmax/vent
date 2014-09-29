@@ -41,11 +41,11 @@ module.exports = function (grunt) {
 		connect: {
 			dev: {
 				options: {
-					port: 8001,
+					port: 8002,
 					livereload: true,
 					base: ['<%= config.directory.tmp %>', '<%= config.directory.app %>'],
 					open: {
-						target: 'http://localhost:8001'
+						target: 'http://localhost:8002'
 					},
 					middleware: function (connect, options, middlewares) {
 						middlewares.unshift(function (req, resp, next) {
