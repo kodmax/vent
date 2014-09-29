@@ -1,8 +1,8 @@
-@import "compass/css3/transition";
-@import "root";
+//@import "compass/css3/transition";
+@import "../root";
 
 offline-warning {
-    @include single-transition(opacity, 0.5s, cubic-bezier(0, 0.05, 0.3, 1));
+    //@include single-transition(opacity, 0.5s, cubic-bezier(0, 0.05, 0.3, 1));
     background-color: $offline-mode-warning-bg-color;
     opacity: 0;
     width: 100%;
