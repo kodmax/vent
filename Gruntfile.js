@@ -311,8 +311,8 @@ module.exports = function (grunt) {
 		}
 	});
 	
-	grunt.registerTask('serve', ['compass', 'jshint', 'karma:dev', 'dom_templates:compile', 'connect:dev', 'watch']);
-	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'compass', 'jshint', 'karma:unit', 'dom_templates:compile', 'requirejs', 'copy', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build']);
+	grunt.registerTask('serve', ['sass', 'jshint', 'karma:dev', 'dom_templates:compile', 'connect:dev', 'watch']);
+	grunt.registerTask('build', ['clean:build', 'useminPrepare', 'sass', 'jshint', 'karma:unit', 'dom_templates:compile', 'requirejs', 'copy', 'cssmin:build', 'filerev', 'usemin', 'htmlmin:build']);
 	grunt.registerTask('serve-build', ['connect:build', 'watch:build']);
 	grunt.registerTask('test', ['jshint', 'karma:unit']);
 	grunt.registerTask('doc', ['jsdoc']);
