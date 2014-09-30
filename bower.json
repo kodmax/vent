@@ -17,6 +17,7 @@
     "backbone": "~1.1.2",
     "jquery": "~2.1.1",
     "jsapp-router": "~0.1.1",
-    "rivets": "~0.6.10"
+    "rivets": "~0.6.10",
+    "compass-mixins": "~1.0.2"
   }
 }

@@ -31,6 +31,7 @@ module.exports = function (grunt) {
 				tmp: '.tmp',
 				app: 'app',
 				scripts: 'app/scripts',
+				_3rdparty: 'app/scripts/.3rd-party',
 				styles: 'app/styles',
 				templates: 'app/templates',
 				build: '.build',
@@ -114,6 +115,9 @@ module.exports = function (grunt) {
 		},
 		
 		sass: {
+			options: {
+				includePaths: ['<%= config.directory._3rdparty %>/compass-mixins/lib']
+			},
 			dist: {
 				files: {
 					'<%= config.directory.tmp %>/css/main.css': ['<%= config.directory.styles %>/main.scss']
