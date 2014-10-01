@@ -1,4 +1,4 @@
-define([ 'rivets', 'exception', 'card-url', 'translate'], function(rivets, Exception, cardUrl, t) {
+define([ 'rivets', 'exception', 'card-url', 'translate', 'lib/argument-list'], function(rivets, Exception, cardUrl, t, args) {
 	'use strict';
 
 	var formatters = function() {
@@ -14,7 +14,10 @@ define([ 'rivets', 'exception', 'card-url', 'translate'], function(rivets, Excep
 		
 		rivets.formatters.translate = {
 			read: function (text) {
-				console.log(text, arguments, this);
+				if (typeof text !== 'string') {
+					text = args(arguments).slice(1).join(' ');
+				}
+				
 				return t(text);
 			}
 		};
