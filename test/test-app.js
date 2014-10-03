@@ -30,14 +30,7 @@ require.config({
 	},
 	
 	paths: {
-		'modernizr': 'amd-wrappers/modernizr',
-		'modernizr.src': '.3rd-party/modernizr/modernizr',
-		'xhr': 'services/xhr',
-		'universal-time': 'services/universal-time/f'
-	},
-	
-	shim: {
-		'modernizr.src': { exports: 'Modernizr'	}
+		'vent': 'services/event-bus/event-bus'
 	}
 
 });

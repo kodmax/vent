@@ -132,14 +132,14 @@ module.exports = function (grunt) {
 		},
 		
 		stonejs: {
-			xhr: {
+			vent: {
 				options: {
-					stoneName: 'xhr',
+					stoneName: 'vent',
 					configFile: 'scripts/app.js',
 					baseDir: 'app/'
 				},
 				files: {
-					'.tmp/xhr.js': 'services/xhr.js'
+					'../dist/vent.js': 'services/event-bus/event-bus.js'
 				}
 			}			
 		},
